@@ -16,6 +16,7 @@ class PagesController extends Controller
 
     public function kuisPage($code)
     {
+        $nisn = session()->get('nisn');
         // Decrypt code
         $decrypted = Crypt::decryptString($code);
         // Cari ID code dg berdasarkan kode
@@ -28,7 +29,7 @@ class PagesController extends Controller
         // Tampilkan pertanyaan dan pilgan berdasarkan relasi dari ID Quiz diatas
         $getQuestion = Question::with('options')->where('quiz_id', $getQuizId)->get();
 
-        return view('quiz', compact('getQuestion'));
+        return view('quiz', compact('getQuestion', 'nisn'));
     }
 
     // PELAJARAN 1
@@ -113,5 +114,10 @@ class PagesController extends Controller
     {
         return view('materi.pelajaran4.manipulatifSenamLantai');
     }
-    // 
+
+    // Login Quiz
+    public function loginQuiz()
+    {
+        return view('layouts.login-quiz');
+    }
 }

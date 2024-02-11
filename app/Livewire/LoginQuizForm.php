@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 
 class LoginQuizForm extends Component
 {
-    public $nama, $code;
+    public $nisn,$nama, $code;
 
     public function render()
     {
@@ -41,8 +41,8 @@ class LoginQuizForm extends Component
             return redirect()->back();
         }
 
+        session()->put('nisn', $this->nisn);
         $link = Crypt::encryptString($this->code);
-        
         return $this->redirect('/kuis/'.$link, navigate: false);
     }
 }

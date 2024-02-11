@@ -21,7 +21,8 @@ Route::get('/', [PagesController::class, 'index'])->name('home');
 Route::get('/kuis/{code}', [PagesController::class, 'kuisPage'])->name('kuisPage');
 Route::get('/handle-answer/{data}', [AnswerHandleController::class, 'store']);
 Route::get('/request-mark', [AnswerHandleController::class, 'calculateAnswerMark']);
-Route::post('/save-answer', [AnswerHandleController::class, 'saveStudentsAnswer']);
+Route::get('/login-quiz', [PagesController::class, 'loginQuiz']);
+Route::post('/quiz-submit', [AnswerHandleController::class, 'saveQuizAnswer'])->name("quiz.submit");
 
 Route::prefix('pelajaran-1')->group(function () {
     Route::get('/', [PagesController::class, 'pelajaran1'])->name('pelajaran1');

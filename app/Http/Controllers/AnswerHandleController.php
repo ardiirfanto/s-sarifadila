@@ -11,7 +11,7 @@ class AnswerHandleController extends Controller
     {
         dump($data);
     }
-    function calculateAnswerMark(Request $request)
+    function calculateAnswerMark(Request $request, $nisn = null)
     {
         $siswa_code_id = $request->input('siswa_code_id');
         $answers = DB::table('answers');
@@ -38,11 +38,24 @@ class AnswerHandleController extends Controller
             $final[$idx]['answer'] = $answer->toArray();
             $idx++;
         });
-        dd($final);
+        if (!empty($nisn)) {
+            return $final[0]['finalMark'];
+        }
+        return $final;
     }
 
-    function saveStudentsAnswer (Request $request){
-        $data = $request->all();
-        dd($data);
+    function saveQuizAnswer(Request $request)
+    {
+        $data = json_decode($request->input("jawaban"), true);
+        $nisn = array_pop($data);
+        collect($data)->map(function ($item) use ($nisn) {
+            DB::table('answers')->insert([
+                'siswa_code_id' => $nisn['nisn'],
+                'question_id' => $item['question_id'],
+                'option_id' => $item['option_id'],
+            ]);
+        });
+        $datas = $this->calculateAnswerMark($request, $nisn['nisn']);
+        return response()->json($datas);
     }
 }
