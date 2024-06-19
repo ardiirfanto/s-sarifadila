@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -11,14 +12,14 @@ class AnswerHandleController extends Controller
     {
         dump($data);
     }
-    function calculateAnswerMark(Request $request, $nisn = null)
+
+    function calculateAnswerMark($nisn, $quiz_id)
     {
-        $siswa_code_id = $request->input('siswa_code_id');
         $answers = DB::table('answers');
-        if (!empty($siswa_code_id)) {
-            $answers->where('siswa_code_id', $siswa_code_id);
+        if (!empty($nisn)) {
+            $answers->where('siswa_code_id', $nisn);
         }
-        $rs =  $answers->select("answers.siswa_code_id", "answers.question_id", "answers.option_id")->get()->map(function ($answer) {
+        $rs = $answers->where("question_id", "=", $quiz_id)->select("answers.siswa_code_id", "answers.question_id", "answers.option_id")->get()->map(function ($answer) use ($quiz_id) {
             $option = DB::table('options')->select("id", "question_id", "option", "nilai")->where('id', $answer->option_id);
             $answer->question = DB::table('questions')->select("id", "quiz_id")->where('id', $answer->question_id)->first() ?? '';
             $answer->nilai = $option->pluck('nilai')->first() ?? '';
@@ -39,8 +40,9 @@ class AnswerHandleController extends Controller
             $idx++;
         });
         if (!empty($nisn)) {
-            return $final[0]['finalMark'];
+            return $final[0]['finalMark'] ?? 0;
         }
+        // dd($final);
         return $final;
     }
 
@@ -53,9 +55,23 @@ class AnswerHandleController extends Controller
                 'siswa_code_id' => $nisn['nisn'],
                 'question_id' => $item['question_id'],
                 'option_id' => $item['option_id'],
+                'code' => session()->get('code'),
             ]);
         });
-        $datas = $this->calculateAnswerMark($request, $nisn['nisn']);
-        return response()->json($datas);
+        $finalResult = 0;
+        $code = session()->get('code');
+        $quiz_id = DB::table('codes')->where('code', $code)->join('questions', "questions.quiz_id", "=", 'codes.quiz_id')->get('questions.id as quiz_id');
+        foreach ($quiz_id as $key => $value) {
+            $finalResult += $this->calculateAnswerMark($nisn['nisn'], $value->quiz_id);
+        }
+
+        Score::create([
+            'nama' => session()->get('name'),
+            'nisn' => $nisn['nisn'],
+            'code' => session()->get('code'),
+            'nilai' => $finalResult
+        ]);
+
+        return response()->json($finalResult);
     }
 }

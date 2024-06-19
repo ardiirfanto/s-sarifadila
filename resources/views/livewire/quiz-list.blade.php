@@ -10,6 +10,15 @@
             </div>
         </div>
     @endif
+    <label for="pelajaran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Sorting Pelajaran</label>
+    <select id="pelajaran" wire:model.live='sorting' class="mb-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-1/2 xl:w-1/4 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option value="0" selected>Lihat Semua</option>
+        <option value="Pelajaran 1">Pelajaran 1</option>
+        <option value="Pelajaran 2">Pelajaran 2</option>
+        <option value="Pelajaran 3">Pelajaran 3</option>
+        <option value="Pelajaran 4">Pelajaran 4</option>
+        <option value="Pelajaran 4">Pelajaran 5</option>
+    </select>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border rounded-lg">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -24,6 +33,9 @@
                         Kode
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Tanggal
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Tindakan
                     </th>
                 </tr>
@@ -33,7 +45,7 @@
                     $no = 1
                 @endphp
                 @foreach ($data as $item)
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" wire:key='{{ $item->id }}'>
+                    <tr wire:key='{{ $item->id }}' class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" wire:key='{{ $item->id }}'>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             {{ $no++ }}
                         </th>
@@ -42,6 +54,9 @@
                         </td>
                         <td class="px-6 py-4">
                             {{ $item->code->code }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $item->created_at->format('d-M-Y') }}
                         </td>
                         <td class="px-6 py-4 flex items-center gap-4">
                             <a href="/dashboard/detail-kuis/{{ $item->id }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
@@ -55,6 +70,9 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="mt-6">
+        {{ $data->links() }}
     </div>
     <div wire:ignore.self id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">

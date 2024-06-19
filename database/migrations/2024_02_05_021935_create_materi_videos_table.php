@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('materi_videos', function (Blueprint $table) {
             $table->id();
             $table->string('pelajaran');
-            $table->string('nama_materi');
             $table->string('video');
             $table->timestamps();
         });

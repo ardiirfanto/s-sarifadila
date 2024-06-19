@@ -3,45 +3,50 @@
 namespace App\Livewire;
 
 use App\Models\Code;
-use App\Models\Siswa;
+use App\Models\Answer;
 use Livewire\Component;
-use App\Models\Siswa_Code;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class LoginQuizForm extends Component
 {
-    public $nisn,$nama, $code;
+    public $code;
 
     public function render()
     {
         return view('livewire.login-quiz-form');
     }
 
-    public function checkSiswa($namaSiswa, $code)
+    public function checkSiswa($nisn, $code)
     {
-        $cariSiswa = Siswa::where('nama', 'LIKE', '%'. $namaSiswa .'%')->get();
-        $cariCode = Code::where('code', 'LIKE', '%'. $code .'%')->get();
+        $trackingCode = Answer::where('siswa_code_id', 'LIKE', '%'. $nisn .'%')
+                                ->where('code', 'LIKE', '%'. $code .'%')->exists();
+        return $trackingCode;
+    }
 
-        foreach ($cariSiswa as $item){
-            foreach($cariCode as $row){
-                $trackingCode = Siswa_Code::where('id_siswa', $item->id)
-                                            ->where('id_code', $row->id)->exists();
-    
-                if($trackingCode){
-                    return $trackingCode;
-                }
-            }
-        }
+    public function checkKuis($code)
+    {
+        return Code::where('code', 'LIKE', '%'. $code .'%')->exists();
     }
 
     public function submit()
     {
-        if($this->checkSiswa($this->nama, $this->code)){
+        $userNisn = Auth::user()->nisn;
+        $userName = Auth::user()->name;
+        
+        if($this->checkSiswa($userNisn, $this->code)){
             session()->flash('status', 'Anda sudah login quiz ini.');
             return redirect()->back();
         }
 
-        session()->put('nisn', $this->nisn);
+        if(!$this->checkKuis($this->code)){
+            session()->flash('status', 'Kuis tidak tersedia.');
+            return redirect()->back();
+        }
+
+        session()->put('name', $userName);
+        session()->put('nisn', $userNisn);
+        session()->put('code', $this->code);
         $link = Crypt::encryptString($this->code);
         return $this->redirect('/kuis/'.$link, navigate: false);
     }

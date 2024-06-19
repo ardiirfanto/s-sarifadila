@@ -22,20 +22,13 @@
     @endif
     <div class="grid grid-cols-12 gap-3">
         <div class="lg:col-span-7 col-span-12 mb-12">
-            <div class="grid xl:grid-cols-2 grid-cols-1 gap-3">
-                @foreach ($data as $item)
-                    <div class="shadow-lg p-3">
-                        <video src="{{ url('storage/materi-video/'. $item->video) }}" controls class="aspect-video bg-black"></video>
-                        <h1 class="text-lg text-center font-semibold mb-3">{{ $item->pelajaran }}</h1>
-                        <h2 class="text-center text-sm">{{ $item->nama_materi }}</h2>
-                    </div>
-                @endforeach
-            </div>
+            <livewire:list-video />
         </div>
         <div class="lg:col-span-5 col-span-12">
-            <div class="border py-8 px-10 shadow-md">
+            <div class="border py-8 xl:px-10 px-3 shadow-md">
                 <livewire:upload-video-form />
             </div>
         </div>
     </div>
+    
 @endsection

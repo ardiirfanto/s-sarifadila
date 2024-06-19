@@ -8,14 +8,22 @@ use App\Models\Option;
 use Livewire\Component;
 use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
+use Livewire\WithPagination;
 
 class QuizList extends Component
 {
-    public $id;
+    use WithPagination;
+
+    public $id, $sorting;
 
     public function render()
     {
-        $data = Quiz::with('code')->latest()->get();
+        if($this->sorting != 0){
+            $data = Quiz::with('code')->where('pelajaran', 'LIKE', '%'.$this->sorting .'%')->latest()->paginate(10);
+        } else {
+            $data = Quiz::with('code')->latest()->paginate(10);
+        }
+        
         return view('livewire.quiz-list', compact('data'));
     }
 

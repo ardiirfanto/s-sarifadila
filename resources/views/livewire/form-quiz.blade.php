@@ -1,6 +1,6 @@
 <div class="sm:w-3/4 xl:w-1/2 w-full">
 
-    <div>
+    {{-- <div>
         <!-- Modal toggle -->
         <button id="modalToggle" style="display: none" data-modal-target="authentication-modal"
             data-modal-toggle="authentication-modal"
@@ -56,20 +56,20 @@
                                         120</h1>
                                 </div>
 
-                                {{-- <div class="grid grid-cols-2 gap-2">
+                                <div class="grid grid-cols-2 gap-2">
                                 <div class="grid grid-cols-subgrid"><button type="submit"
                                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Masuk</button>
                                 </div>
                                 <div class="grid grid-cols-subgrid"><button type="submit"
                                         class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Daftar</button>
                                 </div>
-                            </div> --}}
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <form class="bg-white shadow-lg px-5 py-8" id="submit">
         <h3 class="text-xl font-semibold">Quiz</h3>
@@ -133,12 +133,13 @@
                     "jawaban": JSON.stringify(jawaban)
                 }
             }).then(function(res) {
-                console.log(res);
-                $('#nilai').text(JSON.stringify(res));
-                $('#modalToggle').click()
-                $(elem).html('Lihat Nilai');
-                $(elem).removeAttr('disabled');
-                submitted = true;
+                // console.log(res);
+                // $('#nilai').text(JSON.stringify(res));
+                // $('#modalToggle').click()
+                // $(elem).html('Lihat Nilai');
+                // $(elem).removeAttr('disabled');
+                // submitted = true;
+                window.location.href = `/hasil/${JSON.stringify(res)}`
             }).catch(function(err) {
                 console.log(err);
                 $(elem).html('Kirim');

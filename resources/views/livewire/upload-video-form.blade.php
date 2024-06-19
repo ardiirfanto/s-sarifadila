@@ -3,7 +3,7 @@
         progress[value]::-webkit-progress-bar {
             border: .3px solid rgb(0, 71, 137);
             border-radius: 10rem;
-            width: 20rem;
+            width: 100%;
             background-color: rgb(255, 255, 255);
         }
 
@@ -13,9 +13,15 @@
         }
     </style>
     <form wire:submit='store'>
+        @if (session('failed'))
+            <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+                <span class="font-medium">Oops!</span> {{ session('failed') }}
+            </div>
+        @endif
         <div class="mb-6">
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Pelajaran</label>
             <select wire:model.live='pilihPelajaran' id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+                <option value="0" selected>Pilih Pelajaran</option>
                 <option value="Pelajaran 1">Pelajaran 1</option>
                 <option value="Pelajaran 2">Pelajaran 2</option>
                 <option value="Pelajaran 3">Pelajaran 3</option>
@@ -23,15 +29,17 @@
             </select>
         </div>
         <div class="mb-6">
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Materi</label>
-            <select wire:model.live='pilihMapel' id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                @if (count($optionMeteri) < 1)
-                    <option selected disabled>Silakan Pilih Pelajaran</option>
-                @else
-                    @foreach ($optionMeteri as $item)
-                        <option value="{{ $item }}">{{ $item }}</option> 
-                    @endforeach
-                @endif
+            <label for="materi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Materi</label>
+            @error('materi')
+                <div class="p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300" role="alert">
+                    <span class="font-medium">Oops!</span> Video materi sudah ada.
+                </div>
+            @enderror
+            <select id="materi" wire:model.live='materi' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+              <option value="0" selected>Pilih Materi</option>
+              @foreach ($data as $item)
+                <option value="{{ $item }}">{{ $item }}</option>
+              @endforeach
             </select>
         </div>
         <div class="mb-6"

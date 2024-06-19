@@ -1,0 +1,17 @@
+.logo-animate {
+    animation: bounce .8s infinite alternate;
+}
+
+.btn-animate {
+    animation: bounce .4s infinite alternate;
+}
+
+.btn-click:hover {
+    animation: bounce .4s infinite alternate;
+}
+
+@keyframes bounce {
+    to {
+        transform: scale(1.05);
+    }
+}

@@ -54,6 +54,6 @@ class CreateQuizForm extends Component
 
         session()->flash('success', 'Berhasil disimpan.');
 
-        return redirect()->back();
+        return redirect('/dashboard/kuis');
     }
 }

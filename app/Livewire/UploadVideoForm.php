@@ -5,45 +5,85 @@ namespace App\Livewire;
 use App\Models\MateriVideo;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 
 class UploadVideoForm extends Component
 {
     use WithFileUploads;
 
-    public $pilihPelajaran = "Pelajaran 1";
-    public $pilihMapel = "Jalan Cepat";
+    public $pilihPelajaran;
+
+    #[Validate]
+    public $materi;
 
     public $fileVideo;
 
-    protected $pelajaran1= ["Jalan Cepat", "Lari Jarak Pendek (Sprint)", "Lompat Jauh"];
-    protected $pelajaran2= ["Gerak Dasar Nonlokomtor", "Gerak Nonlokomtor", "Permainan Dalam Gerak Nonlokomotor"];
-    protected $pelajaran3= ["Latihan Dasar Menangkap dan Melempar Bola Basket", "Gerak Dasar Menangkap dan Melempar Bola Kasti"];
-    protected $pelajaran4= ["Gerak Dasar Lokomotor Senam Lantai", "Gerak Dasar Nonlokomotor Senam Lantai", "Gerak Dasar Manipulatif Senam Lantai"];
+    public function rules()
+    {
+        return [
+            'materi' => 'required|unique:materi_videos,pelajaran',
+        ];
+    }
 
     public function render()
     {
         switch($this->pilihPelajaran){
-            case "Pelajaran 1":
-                $optionMeteri = $this->pelajaran1;
+            case 'Pelajaran 1':
+                $data = collect([
+                    'Jalan Cepat',
+                    'Lari Jarak Pendek',
+                    'Lompat Jauh',
+                ]);
                 break;
-            case "Pelajaran 2":
-                $optionMeteri = $this->pelajaran2;
+
+            case 'Pelajaran 2':
+                $data = collect([
+                    'Gerak Nonlokomtor',
+                    'Gerak Dasar Nonlokomtor',
+                    'Permainan Dalam Gerak Nonlokomotor',
+                ]);
                 break;
-            case "Pelajaran 3":
-                $optionMeteri = $this->pelajaran3;
+
+            case 'Pelajaran 3':
+                $data = collect([
+                    'Latihan Dasar Menangkap dan Melempar Bola Basket',
+                    'Latihan Dasar Menangkap dan Melempar Bola Kasti',
+                    'Latihan Dasar Menangkap dan Melempar Bola Kastis',
+                    'Latihan Dasar Menangkap dan Melempar Bola Kastil',
+                ]);
                 break;
-            case "Pelajaran 4":
-                $optionMeteri = $this->pelajaran4;
+
+            case 'Pelajaran 4':
+                $data = collect([
+                    'Gerak Dasar Lokomotor Senam Lantai',
+                    'Gerak Dasar Nonlokomotor Senam Lantai',
+                    'Gerak Dasar Manipulatif Senam Lantai',
+                    
+                ]);
                 break;
+
+            case 'Pelajaran 5':
+                    $data = collect([
+                        'Gerak Dasar Lokomotor Senam Lantai1',
+                        'Gerak Dasar Nonlokomotor Senam Lantai1',
+                        'Gerak Dasar Manipulatif Senam Lantai1',
+                    ]);
+                    break;
+
             default:
-                $optionMeteri = $this->pelajaran1;
+                $data = [];
         }
 
-        return view('livewire.upload-video-form', compact('optionMeteri'));
+        return view('livewire.upload-video-form', compact('data'));
     }
 
     public function store()
     {
+        if($this->materi == 0){
+            session()->flash('failed', 'Pilih materi!');
+            return redirect()->back();
+        }
+        
         $validate = $this->validate([
             'fileVideo' => 'file|max:307200'
         ]);
@@ -56,8 +96,7 @@ class UploadVideoForm extends Component
             $this->fileVideo->store('materi-video', 'public');
     
             MateriVideo::create([
-                'pelajaran' => $this->pilihPelajaran,
-                'nama_materi' => $this->pilihMapel,
+                'pelajaran' => $this->materi,
                 'video' => $this->fileVideo->hashName()
             ]);
 

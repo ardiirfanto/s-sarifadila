@@ -17,10 +17,10 @@ class Answer extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function siswa_code(): BelongsTo
-    {
-        return $this->belongsTo(Siswa_Code::class, 'siswa_code_id');
-    }
+    // public function siswa_code(): BelongsTo
+    // {
+    //     return $this->belongsTo(Siswa_Code::class, 'siswa_code_id');
+    // }
 
     public function option(): BelongsTo
     {

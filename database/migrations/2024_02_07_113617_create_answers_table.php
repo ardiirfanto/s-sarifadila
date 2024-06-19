@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('siswa_code_id');
             $table->foreignId('option_id');
             $table->foreignId('question_id');
+            $table->string('code');
             $table->timestamps();
         });
     }

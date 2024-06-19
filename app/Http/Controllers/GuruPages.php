@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MateriVideo;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +10,17 @@ class GuruPages extends Controller
 {
     public function index()
     {
-        $data = MateriVideo::latest()->get();
-        return view('guruPages.dashboard', compact('data'));
+        return view('guruPages.dash');
     }
 
     public function kuisPage()
     {
         return view('guruPages.quiz');
+    }
+
+    public function hasilKuis()
+    {
+        return view('guruPages.detailHasilKuis');
     }
 
     public function detailQuiz($id)
@@ -26,15 +29,13 @@ class GuruPages extends Controller
         return view('guruPages.quizDetail', compact('data'));
     }
 
-    public function loginPage()
+    public function daftarSiswa()
     {
-        return view('guruPages.login');
+        return view('guruPages.daftar-siswa');
     }
 
-    public function logout()
+    public function videomateri()
     {
-        Auth::logout();
-
-        return redirect('/login');
+        return view('guruPages.videomateri');
     }
 }
