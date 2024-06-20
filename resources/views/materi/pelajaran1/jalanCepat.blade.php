@@ -120,6 +120,7 @@
             document.getElementById('video').pause();
         }
     </script>
+    <script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
 
     <footer>
         <div

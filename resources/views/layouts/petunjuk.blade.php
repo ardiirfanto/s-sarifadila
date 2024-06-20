@@ -93,6 +93,7 @@
         </div>
     </div>
     @include('javascriptPart.js')
+    <script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
 </body>
 <footer>
     <div

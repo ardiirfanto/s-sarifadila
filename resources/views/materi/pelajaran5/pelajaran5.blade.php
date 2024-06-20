@@ -276,6 +276,7 @@
     <script src="js/active.js"></script>
     <script src="js/pwa.js"></script>
     <script src="{{ asset('js/btn-click.js') }}"></script>
+    <script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
 </body>
 
 
