@@ -17,7 +17,7 @@
         <option value="Pelajaran 2">Pelajaran 2</option>
         <option value="Pelajaran 3">Pelajaran 3</option>
         <option value="Pelajaran 4">Pelajaran 4</option>
-        <option value="Pelajaran 4">Pelajaran 5</option>
+        <option value="Pelajaran 5">Pelajaran 5</option>
     </select>
     <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border rounded-lg">
