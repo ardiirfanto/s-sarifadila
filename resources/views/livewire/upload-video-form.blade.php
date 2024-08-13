@@ -26,6 +26,7 @@
                 <option value="Pelajaran 2">Pelajaran 2</option>
                 <option value="Pelajaran 3">Pelajaran 3</option>
                 <option value="Pelajaran 4">Pelajaran 4</option>
+                <option value="Pelajaran 5">Pelajaran 5</option>
             </select>
         </div>
         <div class="mb-6">

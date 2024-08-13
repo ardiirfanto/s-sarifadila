@@ -13,7 +13,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <!-- Title -->
-    <title>Affan - PWA Mobile HTML Template</title>
+    <title>SMKN 5 DUMAI</title>
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">

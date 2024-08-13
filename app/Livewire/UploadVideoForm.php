@@ -30,43 +30,43 @@ class UploadVideoForm extends Component
         switch($this->pilihPelajaran){
             case 'Pelajaran 1':
                 $data = collect([
-                    'Jalan Cepat',
-                    'Lari Jarak Pendek',
-                    'Lompat Jauh',
+                    'sepak bola',
+                    'bola basket',
+                    'bola tangan',
                 ]);
                 break;
 
             case 'Pelajaran 2':
                 $data = collect([
-                    'Gerak Nonlokomtor',
-                    'Gerak Dasar Nonlokomtor',
-                    'Permainan Dalam Gerak Nonlokomotor',
+                    'bola voli',
+                    'bulu tangkis',
+                    'tenis meja',
                 ]);
                 break;
 
             case 'Pelajaran 3':
                 $data = collect([
-                    'Latihan Dasar Menangkap dan Melempar Bola Basket',
-                    'Latihan Dasar Menangkap dan Melempar Bola Kasti',
-                    'Latihan Dasar Menangkap dan Melempar Bola Kastis',
-                    'Latihan Dasar Menangkap dan Melempar Bola Kastil',
+                    'hakikat atletik',
+                    'lari jarak pendek',
+                    'lari jarak menengah',
+                    'lompat jauh',
                 ]);
                 break;
 
             case 'Pelajaran 4':
                 $data = collect([
-                    'Gerak Dasar Lokomotor Senam Lantai',
-                    'Gerak Dasar Nonlokomotor Senam Lantai',
-                    'Gerak Dasar Manipulatif Senam Lantai',
+                    'hakikat pencak silat',
+                    'keterampilan gerak pencak silat ',
+                    'keterampilan gerak belaan',
                     
                 ]);
                 break;
 
             case 'Pelajaran 5':
                     $data = collect([
-                        'Gerak Dasar Lokomotor Senam Lantai1',
-                        'Gerak Dasar Nonlokomotor Senam Lantai1',
-                        'Gerak Dasar Manipulatif Senam Lantai1',
+                        'hakikat kebugaran jasmani',
+                        'latihan kebugaran jasmani',
+                        'tes dan pengkuran ',
                     ]);
                     break;
 

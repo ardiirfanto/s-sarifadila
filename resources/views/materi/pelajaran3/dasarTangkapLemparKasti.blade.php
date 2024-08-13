@@ -1,7 +1,7 @@
 @extends('layouts.materixx')
 
 @section('content')
-    <h1 class="text-xl text-orange-700 font-bold">B. Gerak Dasar Menangkap dan Melempar Bola Kasti</h1>
+    <h1 class="text-xl text-orange-700 font-bold">B. Lari Jarak Pendek</h1>
     <button data-modal-target="extralarge-modal" onclick="playVideo()" data-modal-toggle="extralarge-modal" class="mt-8 mb-3 mx-auto block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
         Lihat Video
     </button>
@@ -30,137 +30,75 @@
             </div>
         </div>
     </div>
+    <h1 class="text-lg text-red-700 font-bold">1. Hakikat Lari Jarak Pendek</h1>
     <p class="text-justify">
-        Gerakan manipulatif, yaitu melempar dan menangkap bola juga terdapat pada permainan kasti. Terdapat perbedaan
-        teknik dalam melempar dan menangkap bola kasti dibandingkan dengan bola basket. Perbedaan tersebut ditentukan juha
-        oleh ukuran bola yang lebih kecil.
-    </p>
-    <p class="text-justify">
-        Permainan kasti merupakan olahraga permainan beregu, setiap regunya terdiri dari 12 orang. Permainan ini dimainkan
-        di lapangan berbentuk empat persegi panjang yang dibatasi oleh garis batas dari beton atau menggunakan tali tambang.
-    </p>
-    <img src="{{ url('assets/kasti_1.jpg') }}" class="block mx-auto mt-3" alt="">
-    <p class="text-center">Gambar 5.1</p>
 
-    <h1 class="text-lg text-sky-700 font-bold">1. Gerakan Dasar Melempar Bola Kasti</h1>
-    <ul style="list-style: lower-alpha" class="ms-8 text-justify">
-        <li class="font-semibold">Melempar Bola Rendah</li>
-            <p>
-                Bola dipegang dengan tangan kanan atau kiri. Ayunkan tangan yang memegang bola, dari belakang ke depan sambil
-                melepaskan bola. Posisi badang tegak, pandangan lurus ke depan. Posisi kaki disesuaikan dengan tangan yang memegang
-                bola tadi. Jika tangan kanan yang melempar, posisi kaki kiri berada di depan agar bola dapat diarahkan dengan sempurna.
-            </p>
-        <li class="font-semibold">Melempar Bola Datar</li>
-            <p>
-                Tangan yang memegang bola berada di samping pinggang. Posisi telapak tangan yang memegang bola menghadap ke depan,
-                kemudian lemparkan lurus ke arah yang dituju dengan posisi kaki terbuka dan badan agak miring.
-            </p>
-        <li class="font-semibold">Melempar Bola Lambung atau Tinggi</li>
-            <p>
-                Poisis yang memegang bola berada di samping kepala dan ditekuk ke arah depan. Ayunkan tangan yang memegang bola
-                dari arah belakang kepala. Lemparkan bola dari tangan lurus ke depan. Posisi kaki disesuaikan dengan tangan yang melempar
-                agar lemparan sempurna.
-            </p>
-            <p>
-                Ketiga gerak dasar melempar bola digunakan oleh seorang pelempar atau pitcher dalam permainan kasti. Agar dapar melempar
-                dengan baik, seorang pelempar menggunakan teknik lemparan dengan gerakan tertentu pula.
-            </p>
-            <p>
-                Cobalah kamu amati gambar peragaan gerak melempar bola berikut! Selanjutnya, praktikan bersama teman-temanmu. Lakukan
-                gerakan melempar bola dengan menggunakan teknik putaran tangan. Cara berlatihnya adalah sebagai berikut.
-            </p>
-            <ul class="list-decimal ms-8">
-                <li class="text-justify">
-                    Kedua tangan lurus kedepan.
+    Lari merupakan salah satu cabang olahraga tertua di dunia
+Sebelum menjadi cabang olahraga, lari sudah dikenal seiak
+peradaban kuno. Terdapat versi yang menyebutkan bahwa lari
+berawal dari bangsa Yunani. Pada saat itu, terjadi peperangan antara
+kaum Yunani dan Persia di Kota Marathonas, Pulau Egina, Yunani.
+Dalam peperangan tersebut, pasukan Yunani berhasil menang atas
+pasukan Persia. Pasukan Yunani pun memerintahkan salah seorang
+pasukannya untuk menyampaikan berita kemenangan tersebut.
+Pembawa berita tersebut pun berlari ke Athena sepanjang 40,8 km
+dalam sehari. Setibanya di kota, ia pingsan, kemudian meninggal
+dunia. Untuk mengenang kemenangan perang dan menghormati
+pembawa berita tersebut, dalam beberapa periode diselenggarakan
+Lomba lari.
+    </p>
+
+    <h1 class="text-lg text-red-700 font-bold mt-5">2. Keterampilan Gerak lari jarak Pendek</h1>
+    <b style="color: black;">A. Star Lari Jarak Pendek</b>
+    <p class="text-justify">
+    
+    Start adalah suatu persiapan awal seorang pelari saat akan
+melakukan gerakan berlari. Start yang digunakan untuk lari jarak
+pendek adalah start jongkok, sedangkan untuk lari jarak menengah
+dan jarak jauh menggunakan start berdiri. Tujuan utama start
+dalam lari jarak pendek, lari estafet, dan lari gawang adalah untuk
+mengoptimalkan kecepatan lari.
+Hal-hal yang perlu dilakukan pada saat start jongkok adalah
+pelari harus berkonsentrasi penuh pada saat terdengar aba-
+aba "Bersedia", menyesuaikan sikap pada aba-aba "Siap", dan
+mendorongkan kedua kaki secara eksplosif pada start block setelah
+aba-aba "Ya"
+<img src="{{ url('assets/starlari.JPG') }}" class="block mx-auto mt-5" alt="">
+    <p class="text-center">Gambar 1.2</p>
+    </p>
+
+    <b style="color: black;">B. Lari Sprint Lari Jarak Pendek</b>
+    <p>Tuiuan keterampilan gerak pada lari jarak pendek adalah
+memaksimalkan kecepatan horizontal yang dihasilkan dari dorongan
+badan ke depan. Kecepatan lari ditentukan oleh panjang langkah
+dan frekuensi langkah. Jadi, pelari jarak pendek harus dapat
+meningkatkan kedua-duanya. Setelah pelari melakukan gerakan
+start, dilanjutkan dengan melakukan lari sprint</p>
+  
+      
+    </ul>
+    <b style="color: black;">C. Memasuki Garis Finis</b>
+    <p class="text-justify">
+    
+    Terdapat tiga macam cara yang dapat digunakan untuk memasuki
+garis finis. Ketiga cara tersebut adalah sebagai berikut.
+<ul class="ms-8 list-decimal">
+                <li>
+                Berlari dengan kecepatan tinggi tanpa mengubah posisi lari
+hingga mencapai garis finis.
                 </li>
-                <li class="text-justify">
-                    Kaki kiri di depan, kaki kanan di belakang.
+                <li>
+                Saat akan menyentuh pita atau melewati garis finis, dada
+dicondongkan ke depan.
                 </li>
-                <li class="text-justify">
-                    Badan sedikit menyerong.
-                </li>
-                <li class="text-justify">
-                    Pandangan ke arah sasaran.
-                </li>
-                <li class="text-justify">
-                    Tangan kanan diputar dari depan ke atas, ke belakang, ke bawah, dan kembali ke depan.
-                </li>
-                <li class="text-justify">
-                    Saat tangan kembali ke depan, bola dilemparkan.
-                </li>
-                <li class="text-justify">
-                    Kaki kanan bergerak untuk menjaga keseimbangan badan.
+                <li>
+                Saat akan menyentuh pita atau melewati garis finis, majukan salah
+satu bahu ke arah depan.
                 </li>
             </ul>
-            <img src="{{ url('assets/kasti_2.jpg') }}" class="block mx-auto mt-3" alt="">
-            <p class="text-center">Gambar 5.2</p>
-    </ul>
 
-    <h1 class="text-lg text-sky-700 font-bold">2. Gerak Dasar Menangkap Bola Kasti</h1>
-    <p class="text-justify">
-        Cara menangkap bola dari berbagai arah dalam permainan kasti perlu dikuasai diantaranya menangkap bola rendah
-        dari arah depan, menangkap bola datar dari arah depan, dan menangkap bola lambung dari arah depan.
-    </p>
-    <img src="{{ url('assets/kasti_3.jpg') }}" class="block mx-auto mt-3" alt="">
-    <p class="text-center">Gambar 5.3</p>
 
-    <ul style="list-style: lower-alpha" class="ms-8 text-justify">
-        <li class="font-semibold">Menangkap Bola Rendah dari Arah Depan</li>
-            <p class="text-justify">
-                Posisi badan agak membungkuk. Kedua kaki terbuka sejajar dan kedua tangan menggantung di depan kaki. Pandangan
-                lurus ke depan. Usahakan tangkap menggunakan kedua tangan.
-            </p>
-
-        <li class="font-semibold">Menangkap Bola Datar dari Arah Depan</li>
-            <p class="text-justify">
-                Posisi badan tegak dengan kedua kaki agak terbuka. Kedua tangan dilipat, dengan posisi telapak di depan dada.
-                Pandangan ke depan. Tangkap bola menggunakan kedua tangan.
-            </p>
-
-        <li class="font-semibold">Menangkap Bola Lambung dari Arah Depan</li>
-            <p class="text-justify">
-                Posisi badan tegak dengan kedua kaki terbuka. Pandangan lurus ke depan tepat ke arah bola. Posisi
-                kedua angan saat menangkap bola berada di depan muka agak ke atas.
-            </p>
-            <img src="{{ url('assets/kasti_4.jpg') }}" class="block mx-auto mt-3" alt="">
-            <p class="text-center">Gambar 5.3</p>
-            <p class="text-justify">
-                Menangkap bola dapat dilakukan dengan satu atau dua tangan. Perhatikan arah bola datang saat menangkap bola.
-                Saat bola masuk ke dalam genggaman telapak tangan, tangan sedikit dimundurkan dan ditutup agar bola tidak memantul kembali.
-            </p>
-            <ul class="list-decimal ms-8">
-                <li>Bola datang horisontal (setinggi dada)</li>
-                    <ul class="list-disc ms-8">
-                        <li>
-                            Sikap berdiri kangkang
-                        </li>
-                        <li>
-                            Kedua tangan lurus ke depan setinggi bahu.
-                        </li>
-                        <li>
-                            Telapak tangan dibuka saling berdekatan (menempel).
-                        </li>
-                    </ul>
-                <li>Menangkap bola secara vertikal</li>
-                    <ul class="list-disc ms-8">
-                        <li>
-                            Berdiri dengan kaki melangkah.
-                        </li>
-                        <li>
-                            Kedua tangan lurus ke atas.
-                        </li>
-                    </ul>
-                <li>Menangkap bola melambung</li>
-                    <ul class="list-disc ms-8">
-                        <li>
-                            Berdiri rapat atau melangkah.
-                        </li>
-                        <li>
-                            Kedua tangan menghadap ke depan atas.
-                        </li>
-                    </ul>
-            </ul>
-    </ul>
+   
     <script>
         function playVideo(){
             document.getElementById('video').play()
@@ -170,6 +108,7 @@
             document.getElementById('video').pause();
         }
     </script>
+<script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
 
 <footer>
 <div class="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
@@ -181,24 +120,24 @@
             </svg>
             <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Home</span>
         </button>
-        <a href="https://shopee.co.id/product/796875347/22545852389?gad_source=4&gclid=CjwKCAiA29auBhBxEiwAnKcSquO1WhCYcsOEwsnek41kmwZlMQb5Fliek-q2VIR4PfEBY4BKjOn3HxoCjLMQAvD_BwE" button type="button" class="inline-flex flex-col items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
+        <a href="https://e-library.erlanggaonline.co.id/info_product/detail/0056130030" button type="button" class="inline-flex flex-col items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
             <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
                 <path d="M19 10h-6a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1Zm-4.5 3.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM12.62 4h2.78L12.539.41a1.086 1.086 0 1 0-1.7 1.352L12.62 4Z"/>
             </svg>
             <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Shop</span>
         </button>
+        <a href="https://smkn5dumai.sch.id/"button type="button" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
+            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
+            </svg>
+            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Profile</span>
+        </button>
         <a href="/logout"button type="button" class="inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800 group">
             <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/>
             </svg>
             <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Logout</span>
-        </button>
-        <a href="https://www.facebook.com/arip.seisar"button type="button" class="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600">
-            <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z"/>
-            </svg>
-            <span class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Profile</span>
         </button>
     </div>
 </div>

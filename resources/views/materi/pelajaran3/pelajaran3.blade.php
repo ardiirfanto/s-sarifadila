@@ -156,7 +156,7 @@
                     <div class="card shadow-sm blog-list-card">
                         <div class="d-flex align-items-center">
                             <div class="card-blog-img position-relative"
-                                style="background-image: url('img/bg-img/22.jpg')">
+                                style="background-image: url('img/bg-img/maraton.jpg')">
                                 <span class="badge bg-warning text-dark position-absolute card-badge">Agency</span>
                             </div>
                             <div class="card-blog-content">
@@ -176,7 +176,7 @@
                     <div class="card shadow-sm blog-list-card">
                         <div class="d-flex align-items-center">
                             <div class="card-blog-img position-relative"
-                                style="background-image: url('img/bg-img/23.jpg')">
+                                style="background-image: url('img/bg-img/pendek.png')">
                                 <span class="badge bg-warning text-dark position-absolute card-badge">Business</span>
                             </div>
                             <div class="card-blog-content">
@@ -198,7 +198,7 @@
                     <div class="card shadow-sm blog-list-card">
                         <div class="d-flex align-items-center">
                             <div class="card-blog-img position-relative"
-                                style="background-image: url('img/bg-img/24.jpg')">
+                                style="background-image: url('img/bg-img/menengah.jpg')">
                                 <span class="badge bg-warning text-dark position-absolute card-badge">World</span>
                             </div>
                             <div class="card-blog-content">
@@ -219,7 +219,7 @@
                     <div class="card shadow-sm blog-list-card">
                         <div class="d-flex align-items-center">
                             <div class="card-blog-img position-relative"
-                                style="background-image: url('img/bg-img/25.jpg')">
+                                style="background-image: url('img/bg-img/lompat.jpg')">
                                 <span class="badge bg-warning text-dark position-absolute card-badge">Fashion</span>
                             </div>
                             <div class="card-blog-content">
@@ -238,47 +238,45 @@
         </div>
     </div>
 
-    <!-- Footer Content -->
-    <div class="footer-nav position-relative">
+      <!-- Footer Nav -->
+  <div class="footer-nav-area" id="footerNav">
+    <div class="container px-0">
+      <!-- Footer Content -->
+      <div class="footer-nav position-relative">
         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-            <li class="active">
-                <a href="home">
-                    <i class="bi bi-house"></i>
-                    <span>Home</span>
-                </a>
-            </li>
+        
+          <li class="active">
+            <a href="home">
+              <i class="bi bi-house"></i>
+              <span>Home</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="pages.html">
-                    <i class="bi bi-collection"></i>
-                    <span>Pages</span>
-                </a>
-            </li>
+          <li>
+            <a href="https://e-library.erlanggaonline.co.id/info_product/detail/0056130030">
+              <i class="bi bi-shop"></i>
+              <span>Shop</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="elements.html">
-                    <i class="bi bi-folder2-open"></i>
-                    <span>Elements</span>
-                </a>
-            </li>
+          <li>
+            <a href="https://smkn5dumai.sch.id/">
+              <i class="bi bi-chat-dots"></i>
+              <span>Profile</span>
+            </a>
+          </li>
 
-            <li>
-                <a href="chat-users.html">
-                    <i class="bi bi-chat-dots"></i>
-                    <span>Chat</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="/logout">
-                    <i class="bi bi-gear"></i>
-                    <span>logout</span>
-                </a>
-            </li>
+          <li>
+            <a href="/logout">
+              <i class="bi bi-gear"></i>
+              <span>logout</span>
+            </a>
+          </li>
         </ul>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
+
 
 
     <!-- All JavaScript Files -->
