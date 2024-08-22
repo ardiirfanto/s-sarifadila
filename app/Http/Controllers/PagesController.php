@@ -84,19 +84,19 @@ class PagesController extends Controller
 
     public function jalanCepat()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%jalan cepat%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%sepak bola%')->get();
         return view('materi.pelajaran1.jalanCepat', compact('data'));
     }
 
     public function lariJarakPendek()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%lari jarak pendek%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%bola basket%')->get();
         return view('materi.pelajaran1.lariJarakPendek', compact('data'));
     }
 
     public function lompatJauh()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%lompat jauh%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%bola tangan%')->get();
         return view('materi.pelajaran1.lompatJauh', compact('data'));
     }
     // 
@@ -110,19 +110,19 @@ class PagesController extends Controller
 
     public function gerakNonlokomotor()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak nonlokomotor%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%bola voli%')->get();
         return view('materi.pelajaran2.gerakNonlokomotor', compact('data'));
     }
 
     public function gerakDasarNonlokomotor()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar nonlokomotor%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%bulu tangkis%')->get();
         return view('materi.pelajaran2.gerakDasarNonlokomotor', compact('data'));
     }
 
     public function permainanGerakNonlokomotor()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%permainan dalam gerak nonlokomotor%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%tenis meja%')->get();
         return view('materi.pelajaran2.permainanGerakNonlokomotor', compact('data'));
     }
     // 
@@ -135,25 +135,25 @@ class PagesController extends Controller
     
     public function dasarTangkapLemparBasket()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%latihan dasar menangkap dan melempar bola basket%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat atletik%')->get();
         return view('materi.pelajaran3.dasarTangkapLemparBasket', compact('data'));
     }
 
     public function dasarTangkapLemparKasti()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%latihan dasar menangkap dan melempar bola kasti%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%lari jarak pendek%')->get();
         return view('materi.pelajaran3.dasarTangkapLemparKasti', compact('data'));
     }
 
     public function dasarTangkapLemparKastis()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%latihan dasar menangkap dan melempar bola kastis%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%lari jarak menengah%')->get();
         return view('materi.pelajaran3.dasarTangkapLemparKastis', compact('data'));
     }
 
     public function dasarTangkapLemparKastil()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%latihan dasar menangkap dan melempar bola kastil%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%lompat jauh%')->get();
         return view('materi.pelajaran3.dasarTangkapLemparKastil', compact('data'));
     }
     // 
@@ -166,19 +166,19 @@ class PagesController extends Controller
     
     public function senamLantai()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar lokomotor senam lantai%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat pencak silat%')->get();
         return view('materi.pelajaran4.senamLantaiLokomotor', compact('data'));
     }
 
     public function senamLantaiNonlokomotor()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar nonlokomotor senam lantai%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%keterampilan gerak pencak silat%')->get();
         return view('materi.pelajaran4.senamLantaiNonlokomotor', compact('data'));
     }
 
     public function manipulatifSenamLantai()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar manipulatif senam lantai%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%keterampilan gerak belaan%')->get();
         return view('materi.pelajaran4.manipulatifSenamLantai', compact('data'));
     }
 
@@ -191,19 +191,19 @@ class PagesController extends Controller
     
     public function senamLantai1()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar lokomotor senam lantai1%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat kebugaran jasmani%')->get();
         return view('materi.pelajaran5.senamLantaiLokomotor1', compact('data'));
     }
 
     public function senamLantaiNonlokomotor1()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar nonlokomotor senam lantai1%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%latihan kebugaran jasmani%')->get();
         return view('materi.pelajaran5.senamLantaiNonlokomotor1', compact('data'));
     }
 
     public function manipulatifSenamLantai1()
     {
-        $data = MateriVideo::where('pelajaran', 'LIKE', '%gerak dasar manipulatif senam lantai1%')->get();
+        $data = MateriVideo::where('pelajaran', 'LIKE', '%tes dan pengukuran%')->get();
         return view('materi.pelajaran5.manipulatifSenamLantai1', compact('data'));
     }
 
