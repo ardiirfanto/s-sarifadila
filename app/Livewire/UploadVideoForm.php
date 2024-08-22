@@ -58,7 +58,7 @@ class UploadVideoForm extends Component
                     'Gerak Dasar Lokomotor Senam Lantai',
                     'Gerak Dasar Nonlokomotor Senam Lantai',
                     'Gerak Dasar Manipulatif Senam Lantai',
-                    
+
                 ]);
                 break;
 
@@ -83,7 +83,7 @@ class UploadVideoForm extends Component
             session()->flash('failed', 'Pilih materi!');
             return redirect()->back();
         }
-        
+
         $validate = $this->validate([
             'fileVideo' => 'file|max:307200'
         ]);
@@ -94,19 +94,19 @@ class UploadVideoForm extends Component
 
         if($this->fileVideo){
             $this->fileVideo->store('materi-video', 'public');
-    
+
             MateriVideo::create([
                 'pelajaran' => $this->materi,
                 'video' => $this->fileVideo->hashName()
             ]);
 
             session()->flash('status', 'Video tersimpan!');
-    
+
             return redirect()->to('/dashboard');
 
         } else {
             session()->flash('status', 'Video gagal tersimpan!');
-    
+
             return redirect()->to('/dashboard');
         }
 

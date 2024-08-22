@@ -26,6 +26,7 @@
                 <option value="Pelajaran 2">Pelajaran 2</option>
                 <option value="Pelajaran 3">Pelajaran 3</option>
                 <option value="Pelajaran 4">Pelajaran 4</option>
+                <option value="Pelajaran 5">Pelajaran 5</option>
             </select>
         </div>
         <div class="mb-6">
@@ -51,7 +52,7 @@
                 x-on:livewire-upload-progress="progress = $event.detail.progress"
         >
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload video <span class="text-red-600">*Maksimal 300MB</span></label>
-            
+
             @error('fileVideo')
                 <span class="inline-block px-4 py-1 font-semibold text-white rounded-full bg-red-600">Upload Gagal!</span>
             @enderror
