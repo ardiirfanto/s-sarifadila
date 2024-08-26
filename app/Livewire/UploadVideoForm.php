@@ -55,17 +55,9 @@ class UploadVideoForm extends Component
 
             case 'Pelajaran 4':
                 $data = collect([
-<<<<<<< HEAD
-                    'Gerak Dasar Lokomotor Senam Lantai',
-                    'Gerak Dasar Nonlokomotor Senam Lantai',
-                    'Gerak Dasar Manipulatif Senam Lantai',
-
-=======
                     'hakikat pencak silat',
                     'keterampilan gerak pencak silat ',
                     'keterampilan gerak belaan',
-                    
->>>>>>> c2220de4a86623470acac3377256882e9fb16a9d
                 ]);
                 break;
 

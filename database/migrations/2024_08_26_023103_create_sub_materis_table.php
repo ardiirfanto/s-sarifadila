@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('materi_videos', function (Blueprint $table) {
+        Schema::create('sub_materis', function (Blueprint $table) {
             $table->id();
-            $table->string('pelajaran');
-            $table->string('video');
+            $table->foreignId('materi_id')
+                ->constrained('materis')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('judul');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('materi_videos');
+        Schema::dropIfExists('sub_materis');
     }
 };

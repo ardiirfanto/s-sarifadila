@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="page-content-wrapper">
 
@@ -86,8 +86,8 @@
                             app.</small>
                     </div>
                 </div>
-                <button class="btn btn-close btn-close-white position-absolute p-1" type="button"
-                    data-bs-dismiss="toast" aria-label="Close"></button>
+                <button class="btn btn-close btn-close-white position-absolute p-1" type="button" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
             {{-- <button onclick="soundBtn()" class="btn btn-primary">Sound</button> --}}
 
@@ -278,76 +278,81 @@
             </div>
         </div>
         <div class="container">
-      <div class="card card-bg-img bg-img bg-overlay mb-3" style="background-image: url('img/bg-img/3.jpg')">
-        <div class="card-body direction-rtl p-4">
-          <h2 class="text-white"> RANGKUMAN</h2>
-          <p class="mb-4 text-white">Rangkuman bermanfaat sebagai sarana untuk membantu kita mengingat isi buku atau suatu uraian yang sangat panjang. Rangkuman berisi ide-ide pokok yang mewakili setiap bagian bacaan atau teks aslinya. Dengan membaca rangkuman seolah-olah kita memahami keseluruhan isi buku secara utuh.</p>
-            <button onclick="animateBtnPelajaran('bab-skor','rangkuman')"
-                                        class="btn btn-warning">BUKA Rangkuman</button>
-          </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card mb-3">
-        <div class="card-body">
-          <h3>PETUNJUK</h3>
-          <p class="mb-4 text-blue">Manual pengguna atau panduan pengguna (bahasa Inggris: user guide, user manual) suatu dokumen komunikasi teknis yang bertujuan memberikan bantuan untuk penggunaan suatu sistem.</p>
-          <button onclick="animateBtnPelajaran('bab-skor','credit')"
-                                        class="btn btn-warning">BUKA Petunjuk</button>
+            <div class="card card-bg-img bg-img bg-overlay mb-3" style="background-image: url('img/bg-img/3.jpg')">
+                <div class="card-body direction-rtl p-4">
+                    <h2 class="text-white"> RANGKUMAN</h2>
+                    <p class="mb-4 text-white">Rangkuman bermanfaat sebagai sarana untuk membantu kita mengingat isi buku
+                        atau suatu uraian yang sangat panjang. Rangkuman berisi ide-ide pokok yang mewakili setiap bagian
+                        bacaan atau teks aslinya. Dengan membaca rangkuman seolah-olah kita memahami keseluruhan isi buku
+                        secara utuh.</p>
+                    <button onclick="animateBtnPelajaran('bab-skor','rangkuman')" class="btn btn-warning">BUKA
+                        Rangkuman</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    
-    <div class="container">
-        <div class="card-body direction-rtl p-4">
-          
+        <div class="container">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h3>PETUNJUK</h3>
+                    <p class="mb-4 text-blue">Manual pengguna atau panduan pengguna (bahasa Inggris: user guide, user
+                        manual) suatu dokumen komunikasi teknis yang bertujuan memberikan bantuan untuk penggunaan suatu
+                        sistem.</p>
+                    <button onclick="animateBtnPelajaran('bab-skor','credit')" class="btn btn-warning">BUKA
+                        Petunjuk</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-   
 
-    <div class="pb-3"></div>
-  </div>
 
-  <!-- Footer Nav -->
-  <div class="footer-nav-area" id="footerNav">
-    <div class="container px-0">
-      <!-- Footer Content -->
-      <div class="footer-nav position-relative">
-        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-        
-          <li class="active">
-            <a href="home">
-              <i class="bi bi-house"></i>
-              <span>Home</span>
-            </a>
-          </li>
+        <div class="container">
+            <div class="card-body direction-rtl p-4">
 
-          <li>
-            <a href="https://e-library.erlanggaonline.co.id/info_product/detail/0056130030">
-              <i class="bi bi-shop"></i>
-              <span>Shop</span>
-            </a>
-          </li>
+            </div>
+        </div>
+        </div>
 
-          <li>
-            <a href="https://smkn5dumai.sch.id/">
-              <i class="bi bi-chat-dots"></i>
-              <span>Profile</span>
-            </a>
-          </li>
 
-          <li>
-            <a href="/logout">
-              <i class="bi bi-gear"></i>
-              <span>logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+        <div class="pb-3"></div>
+        </div>
+
+        <!-- Footer Nav -->
+        <div class="footer-nav-area" id="footerNav">
+            <div class="container px-0">
+                <!-- Footer Content -->
+                <div class="footer-nav position-relative">
+                    <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
+
+                        <li class="active">
+                            <a href="home">
+                                <i class="bi bi-house"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://e-library.erlanggaonline.co.id/info_product/detail/0056130030">
+                                <i class="bi bi-shop"></i>
+                                <span>Shop</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://smkn5dumai.sch.id/">
+                                <i class="bi bi-chat-dots"></i>
+                                <span>Profile</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/logout">
+                                <i class="bi bi-gear"></i>
+                                <span>logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <!-- All JavaScript Files -->
         <script src="js/bootstrap.bundle.min.js"></script>
