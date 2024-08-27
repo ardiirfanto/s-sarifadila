@@ -37,5 +37,9 @@ class DatabaseSeeder extends Seeder
             'role' => 'siswa',
             'password' => Hash::make('siswa123')
         ]);
+        $this->call([
+            MateriSeeder::class,
+            SubMateriSeeder::class
+        ]);
     }
 }

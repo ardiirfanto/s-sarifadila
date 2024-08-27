@@ -29,17 +29,45 @@
             </div>
         </div>
     @endif
-    <div class="grid grid-cols-12 gap-3">
-        <div class="lg:col-span-7 col-span-12 mb-12">
-            <livewire:list-video />
+    <div class="grid lg:grid-cols-1 gap-3 ">
+        <div class="text-lg font-semibold text-blue-700 text-center">
+            Kelola Data Sub-Materi <br>
+            BAB {{ $materi->bab . ' - ' . $materi->judul }}
         </div>
-        <div class="lg:col-span-5 col-span-12">
-            <div class="border py-8 xl:px-10 px-3 shadow-md">
-                <livewire:upload-video-form />
+        <form action="{{ route('submateri.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            {{-- Gambar --}}
+            <input type="hidden" name="materi_id"  value="{{ $materi->id }}">
+            <div class="my-5">
+                <input type="file" name="gambar" id="gambar" accept="image/*"
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    required>
             </div>
-        </div>
+            {{-- Judul --}}
+            <div class="my-5">
+                <label for="judul" class="text-sm font-semibold">Masukan Judul Sub-Materi</label>
+                <input type="text" name="judul" id="judul" placeholder="Cth: Sepak Bola"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required>
+            </div>
+            {{-- Content --}}
+            <div class="my-5">
+                <label for="judul" class="text-sm font-semibold">Masukan Content</label>
+                <div id="quill-editor" class="mb-3" style="height: 300px;"></div>
+                <textarea rows="3" class="mb-3" style="display: none" name="content" id="quill-editor-area" required></textarea>
+            </div>
+            {{-- Simpan --}}
+            <div class="my-5 flex">
+                <button type="submit"
+                    class="grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md p-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Simpan
+                </button>
+            </div>
+
+        </form>
     </div>
 
+    {{-- Footer --}}
     <footer>
         <div
             class="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
@@ -90,4 +118,77 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('quill-editor-area')) {
+
+                var editor = new Quill('#quill-editor', {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [
+                            ['bold', 'italic', 'underline', 'strike'], // toggled buttons
+                            ['blockquote', 'code-block'],
+                            ['link', 'image', 'video', 'formula'],
+
+                            [{
+                                'header': 1
+                            }, {
+                                'header': 2
+                            }], // custom button values
+                            [{
+                                'list': 'ordered'
+                            }, {
+                                'list': 'bullet'
+                            }, {
+                                'list': 'check'
+                            }],
+                            [{
+                                'script': 'sub'
+                            }, {
+                                'script': 'super'
+                            }], // superscript/subscript
+                            [{
+                                'indent': '-1'
+                            }, {
+                                'indent': '+1'
+                            }], // outdent/indent
+                            [{
+                                'direction': 'rtl'
+                            }], // text direction
+
+                            [{
+                                'size': ['small', false, 'large', 'huge']
+                            }], // custom dropdown
+                            [{
+                                'header': [1, 2, 3, 4, 5, 6, false]
+                            }],
+
+                            [{
+                                'color': []
+                            }, {
+                                'background': []
+                            }], // dropdown with defaults from theme
+                            [{
+                                'font': []
+                            }],
+                            [{
+                                'align': []
+                            }],
+
+                            ['clean'] // remove formatting button
+                        ],
+                    }
+                });
+                var quillEditor = document.getElementById('quill-editor-area');
+                editor.on('text-change', function() {
+                    quillEditor.value = editor.root.innerHTML;
+                });
+
+                quillEditor.addEventListener('input', function() {
+                    editor.root.innerHTML = quillEditor.value;
+                });
+            }
+        });
+    </script>
 @endsection

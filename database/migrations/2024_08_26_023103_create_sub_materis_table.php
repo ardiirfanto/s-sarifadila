@@ -19,6 +19,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('judul');
             $table->string('gambar');
+            $table->longText('content')->nullable();
             $table->timestamps();
         });
     }

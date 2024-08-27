@@ -11,8 +11,6 @@ function animateBtn(idComp) {
 
 function animateBtnPelajaran(idComp, href) {
     soundBtn()
-    console.log("TEST KLIK");
-    console.log(href);
     var element = document.getElementById(idComp)
     element.classList.add('btn-animate')
     setTimeout(() => {

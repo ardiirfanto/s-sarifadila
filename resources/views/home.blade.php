@@ -38,11 +38,11 @@
 
     <body>
         <!-- Preloader -->
-        <div id="preloader">
+        {{-- <div id="preloader">
             <div class="spinner-grow text-primary" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Internet Connection Status -->
         <div class="internet-connection-status" id="internetStatus"></div>
@@ -70,8 +70,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="page-content-wrapper">
 
@@ -143,111 +141,30 @@
             <div class="top-products-area">
                 <div class="container">
                     <div class="row g-3">
-
-                        <!-- Single Top Product Card -->
-                        <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-1">
-                            <div class="card single-product-card">
-                                <div class="card-body p-3">
-                                    <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p1.jpg" alt="">
-                                        <!-- Badge -->
-                                        <span class="badge bg-warning">PERMAINAN INVASI</span>
-                                    </a>
-                                    <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">BAB I</a>
-                                    <!-- Product Price -->
-                                    <button onclick="animateBtnPelajaran('bab-1','/pelajaran-1')"
-                                        class="btn btn-primary rounded-pill btn-sm">BUKA BAB I</button>
+                        {{-- Halaman BAB --}}
+                        @foreach ($data as $item)
+                            <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-{{ $item->id }}">
+                                <div class="card single-product-card">
+                                    <div class="card-body p-3">
+                                        <div class="product-thumbnail d-block">
+                                            <img src="{{ asset('assets/img/materi/'.$item->gambar) }}" alt="">
+                                            <span class="badge bg-danger">{{ $item->judul }}</span>
+                                        </div>
+                                        <span class="product-title d-block text-truncate">BAB {{ $item->bab }}</span>
+                                        <button onclick="animateBtnPelajaran('bab-{{ $item->id }}','submateri/{{ $item->id }}')"
+                                            class="btn btn-primary rounded-pill btn-sm">BUKA BAB {{ $item->bab }}</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
 
-                        <!-- Single Top Product Card -->
-                        <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-2">
-                            <div class="card single-product-card">
-                                <div class="card-body p-3">
-                                    <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p2.jpg" alt="">
-                                        <!-- Badge -->
-                                        <span class="badge bg-primary">PERMAINAN NET</span>
-                                    </a>
-                                    <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">BAB II</a>
-                                    <!-- Product Price -->
-
-                                    <button onclick="animateBtnPelajaran('bab-2','pelajaran-2')"
-                                        class="btn btn-primary rounded-pill btn-sm">BUKA BAB II</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Product Card-->
-                        <div class="col-6 col-sm-4 col-lg-3  btn-click" id="bab-3">
-                            <div class="card single-product-card">
-                                <div class="card-body p-3">
-                                    <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p3.jpg" alt="">
-                                        <!-- Badge -->
-                                        <span class="badge bg-info">ATLETIK</span></a>
-                                    <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">BAB III</a>
-                                    <!-- Product Price -->
-
-                                    <button onclick="animateBtnPelajaran('bab-3','pelajaran-3')"
-                                        class="btn btn-primary rounded-pill btn-sm">BUKA BAB III</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Product Card-->
-                        <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-4">
-                            <div class="card single-product-card">
-                                <div class="card-body p-3">
-                                    <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p4.jpg" alt="">
-                                        <!-- Badge -->
-                                        <span class="badge bg-primary">PENCAK SILAT</span></a>
-                                    <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">BAB IV</a>
-                                    <!-- Product Price -->
-
-                                    <button onclick="animateBtnPelajaran('bab-4','pelajaran-4')"
-                                        class="btn btn-primary rounded-pill btn-sm">BUKA BAB IV</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Product Card -->
-                        <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-5">
-                            <div class="card single-product-card">
-                                <div class="card-body p-3">
-                                    <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p5.jpg" alt="">
-                                        <!-- Badge -->
-                                        <span class="badge bg-danger">KEBUGARAN JASMANI</span>
-                                    </a>
-                                    <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">BAB V</a>
-                                    <!-- Product Price -->
-
-                                    <button onclick="animateBtnPelajaran('bab-5','pelajaran-5')"
-                                        class="btn btn-primary rounded-pill btn-sm">BUKA BAB V</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Top Product Card -->
+                        {{-- Halaman SKOR --}}
                         <div class="col-6 col-sm-4 col-lg-3 btn-click" id="bab-skor">
                             <div class="card single-product-card">
                                 <div class="card-body p-3">
                                     <!-- Product Thumbnail -->
                                     <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="img/bg-img/p6.jpg" alt="">
+                                        <img src="{{ asset('img/bg-img/p6.jpg') }}" alt="">
                                         <!-- Badge -->
 
                                     </a>

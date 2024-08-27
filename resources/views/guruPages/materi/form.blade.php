@@ -29,15 +29,40 @@
             </div>
         </div>
     @endif
-    <div class="grid grid-cols-12 gap-3">
-        <div class="lg:col-span-7 col-span-12 mb-12">
-            <livewire:list-video />
+    <div class="grid lg:grid-cols-1 gap-3 ">
+        <div class="text-lg font-semibold text-blue-700 text-center">
+            Tambah Data Materi
         </div>
-        <div class="lg:col-span-5 col-span-12">
-            <div class="border py-8 xl:px-10 px-3 shadow-md">
-                <livewire:upload-video-form />
+        <form action="{{ route('materi.store') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            {{-- Gambar --}}
+            <div class="my-5">
+                <input type="file" name="gambar" id="gambar" accept="image/*"
+                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    required>
             </div>
-        </div>
+            {{-- Bab --}}
+            <div class="my-5">
+                <label for="bab" class="text-sm font-semibold">Masukan BAB</label>
+                <input type="text" name="bab" id="bab" placeholder="Cth: I , II, III"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required>
+            </div>
+            {{-- Judul --}}
+            <div class="my-5">
+                <label for="judul" class="text-sm font-semibold">Masukan Judul Materi</label>
+                <input type="text" name="judul" id="judul" placeholder="Cth: Permainan Net"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    required>
+            </div>
+            {{-- Simpan --}}
+            <div class="my-5 flex">
+                <button type="submit"
+                    class="grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md p-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Simpan
+                </button>
+            </div>
+        </form>
     </div>
 
     <footer>

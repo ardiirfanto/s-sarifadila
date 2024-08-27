@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Materi;
 use App\Models\Quiz;
+use App\Models\SubMateri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,5 +39,36 @@ class GuruPages extends Controller
     public function videomateri()
     {
         return view('guruPages.videomateri');
+    }
+
+    public function kelolamateri()
+    {
+        $materi = Materi::get();
+        $params = [
+            "materi" => $materi
+        ];
+        return view('guruPages.materi.view', $params);
+    }
+    public function kelolasubmateri($materi_id)
+    {
+        $materi = Materi::find($materi_id);
+        $submateri = SubMateri::where('materi_id', $materi_id)->get();
+        $params = [
+            "materi" => $materi,
+            "submateri" => $submateri,
+        ];
+        return view('guruPages.submateri.view', $params);
+    }
+    public function tambahmateri()
+    {
+        return view('guruPages.materi.form');
+    }
+    public function tambahsubmateri($materiid)
+    {
+        $materi = Materi::find($materiid);
+        $params = [
+            "materi" => $materi
+        ];
+        return view('guruPages.submateri.form', $params);
     }
 }
