@@ -57,7 +57,7 @@
                                 class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm p-1 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 px-3">
                                 Hapus
                             </button>
-                            <a href="{{ route('kelolasubmateri', ['materiid' => $item->id]) }}"
+                            <a href="{{ route('ubahsubmateri', ['submateriid' => $item->id]) }}"
                                 class="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm p-1 text-center dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800 px-3">
                                 Ubah
                             </a>

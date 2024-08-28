@@ -34,6 +34,32 @@
 
         <!-- Web App Manifest -->
         <link rel="manifest" href="manifest.json">
+        <style>
+            .video-container {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .text-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color:
+                    white;
+                text-align: center;
+
+            }
+        </style>
     </head>
 
     <body>
@@ -94,6 +120,24 @@
                 <div class="tiny-slider-one">
                     <!-- Single Hero Slide -->
                     <div>
+                        <div class="single-hero-slide bg-overlay">
+                            <div class="h-100 d-flex align-items-center text-center">
+                                <div id="video-container" id="videoBg">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/9N78O6KBvsg?autoplay=1&mute=1&showinfo=0&controls=0"
+                                        frameborder="0">
+                                    </iframe>
+                                </div>
+                                <div class="text-overlay">
+                                    <h3 class="text-white mb-1">MEDIA PEMBELAJARAN</h3>
+                                    <p class="text-white mb-4">PENDIDIKAN JASMANI ,OLAHRAGA DAN KESEHATAN</p>
+                                    <a class="btn btn-creative btn-warning" href="#">KELAS X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- <div>
                         <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/31.jpg')">
                             <div class="h-100 d-flex align-items-center text-center">
                                 <div class="container">
@@ -131,9 +175,14 @@
                         </div>
                     </div>
 
-                    <!-- Single Hero Slide -->
+                    <!-- Single Hero Slide --> --}}
 
                 </div>
+            </div>
+
+            {{-- Video BG --}}
+            <div>
+
             </div>
 
             <div class="pt-3"></div>
@@ -147,12 +196,14 @@
                                 <div class="card single-product-card">
                                     <div class="card-body p-3">
                                         <div class="product-thumbnail d-block">
-                                            <img src="{{ asset('assets/img/materi/'.$item->gambar) }}" alt="">
+                                            <img src="{{ asset('assets/img/materi/' . $item->gambar) }}" alt="">
                                             <span class="badge bg-danger">{{ $item->judul }}</span>
                                         </div>
                                         <span class="product-title d-block text-truncate">BAB {{ $item->bab }}</span>
-                                        <button onclick="animateBtnPelajaran('bab-{{ $item->id }}','submateri/{{ $item->id }}')"
-                                            class="btn btn-primary rounded-pill btn-sm">BUKA BAB {{ $item->bab }}</button>
+                                        <button
+                                            onclick="animateBtnPelajaran('bab-{{ $item->id }}','submateri/{{ $item->id }}')"
+                                            class="btn btn-primary rounded-pill btn-sm">BUKA BAB
+                                            {{ $item->bab }}</button>
                                     </div>
                                 </div>
                             </div>

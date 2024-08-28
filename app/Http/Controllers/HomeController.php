@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Materi;
+use App\Models\MateriVideo;
 use App\Models\SubMateri;
 use Illuminate\Http\Request;
 
@@ -29,5 +30,17 @@ class HomeController extends Controller
         ];
 
         return view('materi.submateri', $params);
+    }
+
+    function detailsubmateri($idsubmateri){
+        $submateri = SubMateri::find($idsubmateri);
+        $video = MateriVideo::where('submateri_id', $idsubmateri)->get();
+
+        $params = [
+            "row" => $submateri,
+            "video" => $video
+        ];
+
+        return view('materi.detail-submateri', $params);
     }
 }

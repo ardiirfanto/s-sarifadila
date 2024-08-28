@@ -16,11 +16,9 @@
                 <label for="pelajaran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pelajaran</label>
                 <select id="pelajaran" wire:model='pelajaran' class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option selected disabled>Pilih Pelajaran</option>
-                    <option value="Pelajaran 1">Pelajaran 1</option>
-                    <option value="Pelajaran 2">Pelajaran 2</option>
-                    <option value="Pelajaran 3">Pelajaran 3</option>
-                    <option value="Pelajaran 4">Pelajaran 4</option>
-                    <option value="Pelajaran 5">Pelajaran 5</option>
+                    @foreach ($materi as $item)
+                        <option value="{{ $item->id }}">BAB {{ $item->bab.' - '.$item->judul }}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-5">

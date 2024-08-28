@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Code;
+use App\Models\Materi;
 use App\Models\Quiz;
 use App\Models\Option;
 use Livewire\Component;
@@ -18,13 +19,21 @@ class QuizList extends Component
 
     public function render()
     {
-        if($this->sorting != 0){
-            $data = Quiz::with('code')->where('pelajaran', 'LIKE', '%'.$this->sorting .'%')->latest()->paginate(10);
+        $materi = Materi::get();
+        if ($this->sorting != 0) {
+            $data = Quiz::with('code')
+                ->join('materis', 'materis.id', 'quizzes.materi_id')
+                ->where('materi_id', 'LIKE', '%' . $this->sorting . '%')
+                ->latest('quizzes.id')
+                ->paginate(10, ['quizzes.*','materis.bab','materis.judul']);
         } else {
-            $data = Quiz::with('code')->latest()->paginate(10);
+            $data = Quiz::with('code')
+                ->join('materis', 'materis.id', 'quizzes.materi_id')
+                ->latest('quizzes.id')
+                ->paginate(10, ['quizzes.*','materis.bab','materis.judul']);
         }
-        
-        return view('livewire.quiz-list', compact('data'));
+
+        return view('livewire.quiz-list', compact('data', 'materi'));
     }
 
     public function hapus($id)
@@ -39,13 +48,13 @@ class QuizList extends Component
         Code::where('quiz_id', $this->id)->delete();
         $find = Question::where('quiz_id', $this->id)->get();
 
-        foreach($find as $item){
+        foreach ($find as $item) {
             $berkas_path = ('public/soal/gambar/' . basename($item->gambar));
             Storage::delete($berkas_path);
-            
+
             Option::where('question_id', $item->id)->delete();
         }
-        
+
         Question::where('quiz_id', $this->id)->delete();
 
         $data->delete();
@@ -54,5 +63,4 @@ class QuizList extends Component
 
         return redirect()->back();
     }
-    
 }

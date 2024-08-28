@@ -46,4 +46,29 @@ class SubMateriController extends Controller
             return redirect()->back();
         }
     }
+
+    function update(Request $req)
+    {
+        $row = SubMateri::find($req->idsubmateri);
+
+        $row->judul = $req->judul;
+        $row->content = $req->content;
+        if(isset($req->gambar)){
+            if ($row->gambar != null) {
+                FileServices::deletegambarsubmateri($row->foto);
+            }
+            $newgambar = FileServices::storegambarsubmateri($req->gambar);
+            $row->gambar = $newgambar;
+        }
+
+        $update = $row->save();
+
+        if (!$update) {
+            session()->flash('status', 'Sub Materi Gagal diubah!');
+            return redirect()->back();
+        }
+
+        session()->flash('status', 'Sub Materi Berhasil diubah!');
+        return redirect()->route('kelolasubmateri', ['materiid' => $req->materi_id]);
+    }
 }

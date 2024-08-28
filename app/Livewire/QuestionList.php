@@ -22,7 +22,7 @@ class QuestionList extends Component
     public function render()
     {
         $data = Question::with('options')->where('quiz_id', $this->id)->get();
-        
+
         return view('livewire.question-list', compact('data'));
     }
 

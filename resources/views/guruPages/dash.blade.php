@@ -33,6 +33,32 @@
 
         <!-- Web App Manifest -->
         <link rel="manifest" href="manifest.json">
+        <style>
+            .video-container {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+            }
+
+            iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .text-overlay {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color:
+                    white;
+                text-align: center;
+
+            }
+        </style>
     </head>
 
     <body>
@@ -92,7 +118,24 @@
             <!-- Tiny Slider One Wrapper -->
             <div class="tiny-slider-one-wrapper">
                 <div class="tiny-slider-one">
-                    <!-- Single Hero Slide -->
+                    <div>
+                        <div class="single-hero-slide bg-overlay">
+                            <div class="h-100 d-flex align-items-center text-center">
+                                <div id="video-container" id="videoBg">
+                                    <iframe
+                                        src="https://www.youtube.com/embed/9N78O6KBvsg?autoplay=1&mute=1&showinfo=0&controls=0"
+                                        frameborder="0">
+                                    </iframe>
+                                </div>
+                                <div class="text-overlay">
+                                    <h3 class="text-white mb-1">MEDIA PEMBELAJARAN</h3>
+                                    <p class="text-white mb-4">PENDIDIKAN JASMANI ,OLAHRAGA DAN KESEHATAN</p>
+                                    <a class="btn btn-creative btn-warning" href="#">KELAS X</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <!-- Single Hero Slide -->
                     <div>
                         <div class="single-hero-slide bg-overlay" style="background-image: url('img/bg-img/31.jpg')">
                             <div class="h-100 d-flex align-items-center text-center">
@@ -131,7 +174,7 @@
                         </div>
                     </div>
 
-                    <!-- Single Hero Slide -->
+                    <!-- Single Hero Slide --> --}}
 
                 </div>
             </div>
@@ -158,7 +201,8 @@
                                     <!-- Contact Info-->
                                     <div class="contact-info bg-primary">
 
-                                        <a class="btn btn-creative btn-warning" href="/dashboard/kelolamateri">Materi dan Sub Materi</a>
+                                        <a class="btn btn-creative btn-warning" href="/dashboard/kelolamateri">Materi dan
+                                            Sub Materi</a>
                                     </div>
                                 </div>
                             </div>

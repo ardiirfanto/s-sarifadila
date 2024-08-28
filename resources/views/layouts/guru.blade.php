@@ -17,7 +17,7 @@
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
                 <div class="flex items-center justify-start rtl:justify-end">
-                    <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
+                    {{-- <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar"
                         aria-controls="logo-sidebar" type="button"
                         class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                         <span class="sr-only">Open sidebar</span>
@@ -27,12 +27,19 @@
                                 d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z">
                             </path>
                         </svg>
-                    </button>
-                    <a href="https://flowbite.com" class="flex ms-2 md:me-24">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                        <span
-                            class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Dashboard</span>
+                    </button> --}}
+                    <a href="{{ url()->previous() }}" type="button"
+                        class="inline-flex items-center p-2 text-sm text-blue-500 rounded-lg sm:hidden hover:bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-200 dark:text-blue-400 dark:hover:bg-blue-700 dark:focus:ring-blue-600">
+                        <span class="font-semibold">BACK</span>
                     </a>
+
+                </div>
+                <div class="flex ms-2 md:me-24">
+                    <img src="{{ asset('img/core-img/logo.png') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                    {{-- <span
+                        class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                        SMKN 5 DUMAI
+                    </span> --}}
                 </div>
                 <div class="flex items-center">
                     <div class="flex items-center ms-3">
@@ -55,13 +62,13 @@
                                     {{ Auth::user()->email }}
                                 </p>
                             </div>
-                            <ul class="py-1" role="none">
+                            {{-- <ul class="py-1" role="none">
                                 <li>
                                     <a href="#" data-modal-target="logout-modal" data-modal-toggle="logout-modal"
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                         role="menuitem">Sign out</a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
                     </div>
                 </div>

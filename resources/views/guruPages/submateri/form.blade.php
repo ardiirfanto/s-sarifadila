@@ -34,33 +34,43 @@
             Kelola Data Sub-Materi <br>
             BAB {{ $materi->bab . ' - ' . $materi->judul }}
         </div>
-        <form action="{{ route('submateri.store') }}" method="post" enctype="multipart/form-data">
+        <form action="{{ $row != null ? route('submateri.update') : route('submateri.store') }}" method="post"
+            enctype="multipart/form-data">
             @csrf
             {{-- Gambar --}}
-            <input type="hidden" name="materi_id"  value="{{ $materi->id }}">
+            <input type="hidden" name="materi_id" value="{{ $materi->id }}">
             <div class="my-5">
                 <input type="file" name="gambar" id="gambar" accept="image/*"
                     class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    required>
+                    {{ $row != null ? '' : 'required' }}>
+                @if ($row != null)
+                    <span class="text-xs text-red-600">*Abaikan jika tidak ingin merubah Gambar</span>
+                    <input type="hidden" value="{{ $row->id }}" name="idsubmateri">
+                @endif
             </div>
             {{-- Judul --}}
             <div class="my-5">
                 <label for="judul" class="text-sm font-semibold">Masukan Judul Sub-Materi</label>
-                <input type="text" name="judul" id="judul" placeholder="Cth: Sepak Bola"
+                <input value="{{ $row != null ? $row->judul : '' }}" type="text" name="judul" id="judul"
+                    placeholder="Cth: Sepak Bola"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required>
             </div>
             {{-- Content --}}
             <div class="my-5">
                 <label for="judul" class="text-sm font-semibold">Masukan Content</label>
-                <div id="quill-editor" class="mb-3" style="height: 300px;"></div>
-                <textarea rows="3" class="mb-3" style="display: none" name="content" id="quill-editor-area" required></textarea>
+                @if ($row != null)
+                    <div id="quill-editor" class="mb-3" style="height: 300px;">{!! $row->content !!}</div>
+                @else
+                    <div id="quill-editor" class="mb-3" style="height: 300px;"></div>
+                @endif
+                <textarea rows="3" class="mb-3" style="display: none" name="content" id="quill-editor-area" required>{!! $row->content ?? '' !!}</textarea>
             </div>
             {{-- Simpan --}}
             <div class="my-5 flex">
                 <button type="submit"
                     class="grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md p-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Simpan
+                    {{ $row != null ? 'Ubah Data' : 'Simpan' }}
                 </button>
             </div>
 

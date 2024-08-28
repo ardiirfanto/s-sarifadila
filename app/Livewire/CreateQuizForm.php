@@ -3,17 +3,19 @@
 namespace App\Livewire;
 
 use App\Models\Code;
+use App\Models\Materi;
 use App\Models\Quiz;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
 class CreateQuizForm extends Component
 {
-    public $pelajaran = "Pelajaran 1", $code;
+    public $pelajaran = 1, $code;
 
     public function render()
     {
-        return view('livewire.create-quiz-form');
+        $materi = Materi::get();
+        return view('livewire.create-quiz-form',compact('materi'));
     }
 
     public function generateCode()
@@ -29,16 +31,16 @@ class CreateQuizForm extends Component
     public function submit()
     {
         if($this->checkCode($this->code)){
-            $this->pelajaran = "Pelajaran 1";
+            $this->pelajaran = 1;
             $this->code = "";
 
             session()->flash('failed', 'Code sudah ada.');
 
             return redirect()->back();
         }
-        
+
         Quiz::create([
-            'pelajaran' => $this->pelajaran
+            'materi_id' => $this->pelajaran
         ]);
 
         $idQuiz = Quiz::latest()->first()->id;
@@ -49,7 +51,7 @@ class CreateQuizForm extends Component
             'quiz_id' => $idQuiz
         ]);
 
-        $this->pelajaran = "Pelajaran 1";
+        $this->pelajaran = 1;
         $this->code = "";
 
         session()->flash('success', 'Berhasil disimpan.');

@@ -145,19 +145,24 @@
                         <div class="card shadow-sm blog-list-card">
                             <div class="d-flex align-items-center">
                                 <div class="card-blog-img position-relative"
-                                    style="background-image: url({{ asset('assets/img/submateri/'.$item->gambar) }})">
+                                    style="background-image: url({{ asset('assets/img/submateri/' . $item->gambar) }})">
                                     {{-- <span class="badge bg-warning text-dark position-absolute card-badge">World</span> --}}
                                 </div>
                                 <div class="card-blog-content">
-                                    <span class="badge bg-danger rounded-pill mb-2 d-inline-block">{{ $materi->judul }}</span>
+                                    <span
+                                        class="badge bg-danger rounded-pill mb-2 d-inline-block">{{ $materi->judul }}</span>
                                     <a class="blog-title d-block mb-3 text-dark">{{ $item->judul }}</a>
-                                    <button onclick="animateBtnPelajaran('pelmat-{{ $item->id }}','pelajaran-1/lompat-jauh')"
+                                    <button
+                                        onclick="animateBtnPelajaran('pelmat-{{ $item->id }}','{{ route('detailsubmateri', ['idsubmateri' => $item->id]) }}')"
                                         class="btn btn-primary btn-sm">BUKA MATERI</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @empty
+                    <div class="alert alert-danger my-3 mx-3 pt-2">
+                        <h6 class="text-danger">Data belum ditambahkan</h6>
+                    </div>
                 @endforelse
             </div>
         </div>

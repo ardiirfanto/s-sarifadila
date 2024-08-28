@@ -27,7 +27,9 @@ class GuruPages extends Controller
 
     public function detailQuiz($id)
     {
-        $data = Quiz::find($id);
+        $data = Quiz::join('materis', 'materis.id', 'quizzes.materi_id')
+            ->where('quizzes.id', $id)
+            ->first(['quizzes.*','materis.bab','materis.judul']);
         return view('guruPages.quizDetail', compact('data'));
     }
 
@@ -67,7 +69,18 @@ class GuruPages extends Controller
     {
         $materi = Materi::find($materiid);
         $params = [
-            "materi" => $materi
+            "materi" => $materi,
+            "row" => null,
+        ];
+        return view('guruPages.submateri.form', $params);
+    }
+    public function ubahsubmateri($submateriid)
+    {
+        $submateri = SubMateri::find($submateriid);
+        $materi = Materi::find($submateri->materi_id);
+        $params = [
+            "materi" => $materi,
+            "row" => $submateri,
         ];
         return view('guruPages.submateri.form', $params);
     }
