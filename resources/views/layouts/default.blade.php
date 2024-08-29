@@ -124,7 +124,7 @@
             <div class="header-content position-relative d-flex align-items-center justify-content-between">
                 <!-- Back Button -->
                 <div class="back-button">
-                    <a href="pages.html">
+                    <a href="{{ url()->previous() }}">
                         <i class="bi bi-arrow-left-short"></i>
                     </a>
                 </div>
@@ -152,12 +152,12 @@
     </div>
     <div class="container">
         <div class="card-body direction-rtl p-4">
-          
+
         </div>
       </div>
     </div>
 
-   
+
 
     <div class="pb-3"></div>
   </div>
@@ -170,9 +170,9 @@
       <!-- Footer Content -->
       <div class="footer-nav position-relative">
         <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-        
+
           <li class="active">
-            <a href="home">
+            <a href="{{ route('home') }}">
               <i class="bi bi-house"></i>
               <span>Home</span>
             </a>
@@ -220,6 +220,7 @@
     <script src="{{ asset('js/pwa.js') }}"></script>
     <script src="{{ asset('js/btn-click.js') }}"></script>
     <script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
+    @stack('js')
 </body>
 
 

@@ -8,6 +8,7 @@ use App\Livewire\PelajaranPages\Pelajaran1;
 use App\Http\Controllers\AnswerHandleController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\QuizController;
 use App\Http\Controllers\SubMateriController;
 
 /*
@@ -20,9 +21,10 @@ use App\Http\Controllers\SubMateriController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', [PagesController::class, 'index'])->name('home')->middleware('guest');
 
-Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function(){
+Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function () {
     Route::get('/kuis/{code}', [PagesController::class, 'kuisPage'])->name('kuisPage');
     Route::get('/hasil/{nilai}', [PagesController::class, 'hasilPage'])->name('kuisPage');
     Route::get('/handle-answer/{data}', [AnswerHandleController::class, 'store']);
@@ -84,9 +86,13 @@ Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function(){
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     Route::get('/submateri/{idmateri}', [HomeController::class, 'submateri'])->name('submateri');
     Route::get('/detailsubmateri/{idsubmateri}', [HomeController::class, 'detailsubmateri'])->name('detailsubmateri');
+    Route::prefix('ajax')->group(function () {
+        Route::get('soal/{code}', [QuizController::class, 'view_soal'])->name('ajax.soal');
+        Route::post('store_answer', [QuizController::class, 'store_answer'])->name('ajax.store_answer');
+    });
 });
 
-Route::group(['middleware' => ['auth', 'HakAkses:guru']], function(){
+Route::group(['middleware' => ['auth', 'HakAkses:guru']], function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [GuruPages::class, 'index'])->name('dashboard');
         Route::get('/kuis', [GuruPages::class, 'kuisPage'])->name('kuisPageGuru');
@@ -100,14 +106,14 @@ Route::group(['middleware' => ['auth', 'HakAkses:guru']], function(){
         Route::get('/tambahsubmateri/{materiid}', [GuruPages::class, 'tambahsubmateri'])->name('tambahsubmateri');
         Route::get('/ubahsubmateri/{submateriid}', [GuruPages::class, 'ubahsubmateri'])->name('ubahsubmateri');
 
-        Route::prefix('materi')->group(function(){
-            Route::post('store',[MateriController::class,'store'])->name('materi.store');
-            Route::get('del/{id}',[MateriController::class,'delete'])->name('materi.delete');
+        Route::prefix('materi')->group(function () {
+            Route::post('store', [MateriController::class, 'store'])->name('materi.store');
+            Route::get('del/{id}', [MateriController::class, 'delete'])->name('materi.delete');
         });
-        Route::prefix('submateri')->group(function(){
-            Route::post('store',[SubMateriController::class,'store'])->name('submateri.store');
-            Route::post('update',[SubMateriController::class,'update'])->name('submateri.update');
-            Route::get('del/{id}',[SubMateriController::class,'delete'])->name('submateri.delete');
+        Route::prefix('submateri')->group(function () {
+            Route::post('store', [SubMateriController::class, 'store'])->name('submateri.store');
+            Route::post('update', [SubMateriController::class, 'update'])->name('submateri.update');
+            Route::get('del/{id}', [SubMateriController::class, 'delete'])->name('submateri.delete');
         });
     });
 });

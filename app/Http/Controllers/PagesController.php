@@ -6,6 +6,7 @@ use App\Models\Code;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\MateriVideo;
+use App\Models\QuizTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
@@ -34,19 +35,17 @@ class PagesController extends Controller
             'email' => $request->email,
             'password' => $request->password
         ];
-        if(Auth::attempt($infologin)){
+        if (Auth::attempt($infologin)) {
             //jika otentifikasi berhasil
             return redirect('home')->withErrors('username dan password yang dimasukkan valid');
-        }else {
+        } else {
             //jika gagal
             return redirect('login')->withErrors('username dan password yang dimasukkan tidak valid');
-
         }
-            
     }
 
     public function kuisPage($code)
-    {   
+    {
         $nisn = session()->get('nisn');
 
         // Decrypt code
@@ -61,14 +60,18 @@ class PagesController extends Controller
         // Tampilkan pertanyaan dan pilgan berdasarkan relasi dari ID Quiz diatas
         $getQuestion = Question::with('options')->where('quiz_id', $getQuizId)->get();
 
-        $trackingCode = Answer::where('siswa_code_id', 'LIKE', '%'. $nisn .'%')
-                                ->where('code', 'LIKE', '%'. $code .'%')->exists();
+        $trackingCode = Answer::where('siswa_code_id', 'LIKE', '%' . $nisn . '%')
+            ->where('code', 'LIKE', '%' . $code . '%')->exists();
 
-        if($trackingCode){
+        if ($trackingCode) {
             return redirect('/');
         }
 
-        return view('quiz', compact('getQuestion', 'nisn'));
+        $time = $this->timer();
+        $quiz_code = $decrypted;
+
+        // return view('quiz', compact('getQuestion', 'nisn'));
+        return view('quiz.form', compact('quiz_code', 'nisn', 'time'));
     }
 
     public function hasilPage($nilai)
@@ -99,7 +102,7 @@ class PagesController extends Controller
         $data = MateriVideo::where('pelajaran', 'LIKE', '%bola tangan%')->get();
         return view('materi.pelajaran1.lompatJauh', compact('data'));
     }
-    // 
+    //
 
 
     // PELAJARAN 2
@@ -125,14 +128,14 @@ class PagesController extends Controller
         $data = MateriVideo::where('pelajaran', 'LIKE', '%tenis meja%')->get();
         return view('materi.pelajaran2.permainanGerakNonlokomotor', compact('data'));
     }
-    // 
+    //
 
     // PELAJARAN 3
     public function pelajaran3()
     {
         return view('materi.pelajaran3.pelajaran3');
     }
-    
+
     public function dasarTangkapLemparBasket()
     {
         $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat atletik%')->get();
@@ -156,14 +159,14 @@ class PagesController extends Controller
         $data = MateriVideo::where('pelajaran', 'LIKE', '%lompat jauh%')->get();
         return view('materi.pelajaran3.dasarTangkapLemparKastil', compact('data'));
     }
-    // 
+    //
 
     // PELAJARAN 4
     public function pelajaran4()
     {
         return view('materi.pelajaran4.pelajaran4');
     }
-    
+
     public function senamLantai()
     {
         $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat pencak silat%')->get();
@@ -182,13 +185,13 @@ class PagesController extends Controller
         return view('materi.pelajaran4.manipulatifSenamLantai', compact('data'));
     }
 
-    
+
     // PELAJARAN 5
     public function pelajaran5()
     {
         return view('materi.pelajaran5.pelajaran5');
     }
-    
+
     public function senamLantai1()
     {
         $data = MateriVideo::where('pelajaran', 'LIKE', '%hakikat kebugaran jasmani%')->get();
@@ -234,7 +237,7 @@ class PagesController extends Controller
     {
         return view('petunjuk.pelajaran4');
     }
-    
+
     // RANGKUMAN
     public function rangkuman()
     {
@@ -250,7 +253,7 @@ class PagesController extends Controller
     public function home()
     {
         return view('home');
-    }// INFORMASI
+    } // INFORMASI
     public function informasi()
     {
         return view('informasi');
@@ -260,5 +263,36 @@ class PagesController extends Controller
     {
         return view('nilai');
     }
-     
+
+    // Private
+
+    private function timer()
+    {
+        $qt = QuizTime::first();
+        $timer = $qt->time;
+
+        $temp_waktu = ($timer * 60) - 0; //dijadikan detik dan dikurangi waktu yang berlalu
+        $temp_menit = ($temp_waktu / 60);                //dijadikan menit lagi
+        $temp_detik = $temp_waktu % 60;                       //sisa bagi untuk detik
+
+        if ($temp_menit < 60) {
+            /* Apabila $temp_menit yang kurang dari 60 menit */
+            $jam    = 0;
+            $menit  = $temp_menit;
+            $detik  = $temp_detik;
+        } else {
+            /* Apabila $temp_menit lebih dari 60 menit */
+            $jam    = ($temp_menit / 60);    //$temp_menit dijadikan jam dengan dibagi 60 dan dibulatkan menjadi integer
+            $menit  = $temp_menit % 60;           //$temp_menit diambil sisa bagi ($temp_menit%60) untuk menjadi menit
+            $detik  = $temp_detik;
+        }
+
+        $time = [
+            'jam' => $jam,
+            'menit' => $menit,
+            'detik' => $detik,
+        ];
+
+        return $time;
+    }
 }
