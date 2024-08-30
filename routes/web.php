@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function () {
         Route::get('soal/{code}', [QuizController::class, 'view_soal'])->name('ajax.soal');
         Route::post('store_answer', [QuizController::class, 'store_answer'])->name('ajax.store_answer');
     });
+    Route::get('quiz_nilai/{code}',[QuizController::class,'view_nilai'])->name('quiz_nilai');
 });
 
 Route::group(['middleware' => ['auth', 'HakAkses:guru']], function () {

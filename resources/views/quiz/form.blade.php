@@ -3,7 +3,7 @@
     <div id="timer"></div>
 @endsection
 @section('content')
-    <div class="sm:w-3/4 xl:w-1/2 w-full mt-10">
+    <div class="sm:w-3/4 xl:w-1/2 w-full mt-8">
         {{-- <form class="bg-white shadow-lg px-5 py-8" id="submit">
             <ul class="list-decimal p-0">
                 @foreach ($getQuestion as $item)
@@ -50,7 +50,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script>
         let submitted = false;
         $(document).ready(function() {
