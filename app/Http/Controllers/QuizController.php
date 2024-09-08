@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\Code;
 use App\Models\Question;
+use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,7 +55,7 @@ class QuizController extends Controller
             // echo json_encode($params);
             // exit;
 
-            echo view('quiz.components.soal', $params);
+            echo view('quiz.components.soal_quiz', $params);
 
             // $trackingCode = Answer::where('siswa_code_id', 'LIKE', '%' . $nisn . '%')
             //     ->where('code', 'LIKE', '%' . $code . '%')->exists();
@@ -95,6 +96,13 @@ class QuizController extends Controller
         foreach ($quiz_id as $key => $value) {
             $finalResult += $this->calculateAnswerMark($nisn, $value->quiz_id);
         }
+
+        Score::create([
+            'nama' => session()->get('name'),
+            'nisn' => $nisn,
+            'code' => $code,
+            'nilai' => $finalResult
+        ]);
 
         $params = [
             "nilai" => $finalResult

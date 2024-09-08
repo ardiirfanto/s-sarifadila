@@ -14,22 +14,36 @@ class ScoreList extends Component
 
     public function render()
     {
-        switch($this->urutkan){
+        $query = Score::join('codes', 'codes.code', 'scores.code')
+            ->join('quizzes', 'codes.quiz_id', 'quizzes.id')
+            ->join('materis', 'materis.id', 'quizzes.materi_id');
+        $select = [
+            "scores.nilai",
+            "scores.created_at",
+            "scores.id",
+            "scores.nisn",
+            "scores.nama",
+            "materis.bab",
+            "materis.judul"
+        ];
+        switch ($this->urutkan) {
             case '1':
-                $data = Score::orderBy('nilai', 'DESC')->paginate(10);
+                $data = $query->orderBy('nilai', 'DESC')->paginate(10, $select);
                 break;
             case '2':
-                $data = Score::orderBy('nilai', 'ASC')->paginate(10);
+                $data = $query->orderBy('nilai', 'ASC')->paginate(10, $select);
                 break;
             default:
-                $data = Score::latest()->paginate(10);
+                $data = $query->orderBy('created_at', 'DESC')->paginate(10, $select);
         }
 
-        if(strlen($this->pencarian) > 2){
-            $data = Score::where('nama', 'LIKE', '%'. $this->pencarian .'%')
-                            ->orWhere('nisn', 'LIKE', '%'. $this->pencarian .'%')->latest()->paginate(10);
+        if (strlen($this->pencarian) > 2) {
+            $data = $query->where('scores.nama', 'LIKE', '%' . $this->pencarian . '%')
+                ->orWhere('scores.nisn', 'LIKE', '%' . $this->pencarian . '%')
+                ->orderBy('scores.nilai', 'DESC')
+                ->paginate(10, $select);
         }
-        
+
         return view('livewire.score-list', compact('data'));
     }
 }

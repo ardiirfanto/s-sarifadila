@@ -33,7 +33,7 @@ class LoginQuizForm extends Component
     {
         $userNisn = Auth::user()->nisn;
         $userName = Auth::user()->name;
-        
+
         if($this->checkSiswa($userNisn, $this->code)){
             session()->flash('status', 'Anda sudah login quiz ini.');
             return redirect()->back();

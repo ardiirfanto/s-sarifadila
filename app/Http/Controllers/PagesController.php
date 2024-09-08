@@ -71,7 +71,7 @@ class PagesController extends Controller
         $quiz_code = $decrypted;
 
         // return view('quiz', compact('getQuestion', 'nisn'));
-        return view('quiz.form', compact('quiz_code', 'nisn', 'time'));
+        return view('quiz.form_quiz', compact('quiz_code', 'nisn', 'time'));
     }
 
     public function hasilPage($nilai)

@@ -33,7 +33,7 @@
                         NISN
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Code
+                        Pelajaran
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Tanggal Submit
@@ -66,7 +66,7 @@
                             {{ $item->nisn }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $item->code }}
+                            BAB {{ $item->bab.' - '. $item->judul }}
                         </td>
                         <td class="px-6 py-4">
                             {{ $item->created_at->format('d-M-Y') }}

@@ -2,11 +2,11 @@
     :root {
         --card-line-height: 1.2em;
         --card-padding: 1em;
-        --card-radius: 0.5em;
-        --color-green: #0eb129;
+        --card-radius: 1em;
+        --color-green: hsl(244, 85%, 37%);
         --color-gray: #e2ebf6;
         --color-dark-gray: #c4d1e1;
-        --radio-border-width: 2px;
+        --radio-border-width: 4px;
         --radio-size: 1.5em;
     }
 
@@ -55,7 +55,7 @@
                 border-color 0.2s ease-out;
             width: var(--radio-size);
 
-            &::after {
+            /* &::after {
                 border: var(--radio-border-width) solid #fff;
                 border-top: 0;
                 border-left: 0;
@@ -68,7 +68,7 @@
                 transform:
                     rotate(45deg) translate(-50%, -50%);
                 width: 0.375rem;
-            }
+            } */
 
             &:checked {
                 background: var(--color-green);
@@ -164,22 +164,28 @@
 </style>
 <div class="row bg-transparent">
     <div class="col-12">
-        @if ($soal->gambar != null)
-            <div class="mb-3">
-                <img style="margin: auto;display:block" width="75%"
-                    src="{{ url('/storage/soal/gambar/' . $soal->gambar) }}" alt="">
+        <div class="card">
+            <div class="card-body">
+                @if ($soal->gambar != null)
+                    <div class="mb-3">
+                        <img style="margin: auto;display:block" width="75%"
+                            src="{{ url('/storage/soal/gambar/' . $soal->gambar) }}" alt="">
+                    </div>
+                @endif
+                <div class="font-semibold text-xl text-info">
+                    {{ $soal->pertanyaan }}
+                </div>
             </div>
-        @endif
-        <div class="font-semibold text-xl text-white">
-            {{ $soal->pertanyaan }}
         </div>
+    </div>
+    <div class="col-12">
         <div class="mt-5 justify-end">
             <input id="question" type="hidden" name="question" value="{{ $soal->id }}">
             @foreach ($soal->options as $key => $item)
-                <label class="card bg-{{ $colors[$key] }} mb-2">
-                    <input name="answer" class="radio" type="radio" value="{{ $item->id }}">
+                <label id="label{{ $item->id }}" class="label card bg-white mb-2">
+                    <input onchange="validateAnswer(this)" data-nilai="{{ $item->nilai }}" name="answer" class="radio" type="radio" value="{{ $item->id }}">
                     <div class="card-body plan-details">
-                        <span class="text-white font-bold text-lg">
+                        <span class="text-dark font-bold text-lg">
                             {{ $item->option }}
                         </span>
                     </div>
@@ -187,11 +193,11 @@
             @endforeach
         </div>
     </div>
-    <div class="col-12">
+    {{-- <div class="col-12">
         <div class="d-flex mt-10">
             <button onclick="saveAnswer()" class="btn btn-light grow">
                 Simpan
             </button>
         </div>
-    </div>
+    </div> --}}
 </div>

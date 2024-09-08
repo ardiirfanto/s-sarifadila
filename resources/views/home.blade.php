@@ -196,7 +196,8 @@
                                 <div class="card single-product-card">
                                     <div class="card-body p-3">
                                         <div class="product-thumbnail d-block">
-                                            <img src="{{ asset('assets/img/materi/' . $item->gambar) }}" alt="">
+                                            <img style="width: 100%;height:150px;object-fit:cover"
+                                                src="{{ asset('assets/img/materi/' . $item->gambar) }}" alt="">
                                             <span class="badge bg-danger">{{ $item->judul }}</span>
                                         </div>
                                         <span class="product-title d-block text-truncate">BAB {{ $item->bab }}</span>
@@ -214,15 +215,13 @@
                             <div class="card single-product-card">
                                 <div class="card-body p-3">
                                     <!-- Product Thumbnail -->
-                                    <a class="product-thumbnail d-block" href="shop-details.html">
-                                        <img src="{{ asset('img/bg-img/p6.jpg') }}" alt="">
-                                        <!-- Badge -->
-
-                                    </a>
+                                    <div class="product-thumbnail d-block">
+                                        <img style="width: 100%;height:150px;object-fit:cover"
+                                            src="{{ asset('img/bg-img/p6.jpg') }}" alt="">
+                                    </div>
                                     <!-- Product Title -->
-                                    <a class="product-title d-block text-truncate" href="#">SKOR</a>
+                                    <span class="product-title d-block text-truncate" href="#">SKOR</span>
                                     <!-- Product Price -->
-
                                     <button onclick="animateBtnPelajaran('bab-skor','nilai')"
                                         class="btn btn-primary rounded-pill btn-sm">BUKA SKOR</button>
                                 </div>

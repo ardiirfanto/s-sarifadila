@@ -51,12 +51,33 @@
         crossorigin="anonymous"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="{{ asset('js/bg-music-quiz.js') }}"></script>
     <script>
         let submitted = false;
         $(document).ready(function() {
             timer();
             loadSoal();
         });
+
+        function validateAnswer(input) {
+            var value = input.value;
+            var nilai = input.getAttribute("data-nilai");
+            var label = document.getElementById("label" + value);
+            var labelClass = document.querySelectorAll(".label");
+
+            labelClass.forEach(function(el) {
+                el.classList.remove("bg-success")
+                el.classList.remove("bg-danger")
+            })
+            if (nilai > 0) {
+                soundCorrect()
+                label.classList.add("bg-success")
+            } else {
+                soundWrong()
+                label.classList.add("bg-danger")
+            }
+            saveAnswer()
+        }
 
         function saveAnswer() {
             var question = $("#question").val();
