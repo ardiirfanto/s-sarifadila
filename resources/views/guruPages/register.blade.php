@@ -72,7 +72,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="POST" action="{{ route('registerProcess') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('registerProcess') }}">
                         @csrf
                         <div class="form-group">
                             <label for="nisn" class="text-white">Masukan NISN</label>

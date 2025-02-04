@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use App\Models\Materi;
 use App\Models\MateriVideo;
 use App\Models\SubMateri;
@@ -13,13 +14,25 @@ class HomeController extends Controller
 {
     function home()
     {
-        $materis = Materi::get();
+        $mapels = Mapel::join('users','mapels.user_id','users.id')->get(['mapels.*','users.name']);
 
         $params = [
-            "data" => $materis
+            "data" => $mapels
         ];
 
         return view('home', $params);
+    }
+
+    function materi($mapelid){
+        $mapel = Mapel::find($mapelid);
+        $materis = Materi::where('mapel_id',$mapelid)->get();
+
+        $params = [
+            "mapel" => $mapel,
+            "data" => $materis
+        ];
+
+        return view('mapel', $params);
     }
 
     function submateri($idmateri){

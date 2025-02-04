@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function () {
 
     // NEW PAGE
     Route::get('/home', [HomeController::class, 'home'])->name('home');
+    Route::get('/materi/{idmapel}', [HomeController::class, 'materi'])->name('materi');
     Route::get('/submateri/{idmateri}', [HomeController::class, 'submateri'])->name('submateri');
     Route::get('/detailsubmateri/{idsubmateri}', [HomeController::class, 'detailsubmateri'])->name('detailsubmateri');
     Route::prefix('ajax')->group(function () {
@@ -124,7 +125,7 @@ Route::group(['middleware' => ['auth', 'HakAkses:guru']], function () {
 
 
 Route::group(['middleware' => ['auth', 'HakAkses:kurikulum']], function () {
-    Route::get('/dashboard', [KurikulumPages::class, 'index'])->name('dashboard');
+    Route::get('/dashboard-kurikulum', [KurikulumPages::class, 'index'])->name('dashboard-kurikulum');
 
     Route::prefix('daftar-guru')->group(function () {
         Route::get('/', [KurikulumPages::class, 'daftarGuru'])->name('daftar-guru');

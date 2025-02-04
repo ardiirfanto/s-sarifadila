@@ -40,13 +40,13 @@ class LoginController extends Controller
             return redirect()->back();
         }
 
-        $request->session()->regenerate();
+
         if ($user->role == 'kurikulum') {
-            return redirect()->route('dashboard');
+            return redirect()->intended('dashboard-kurikulum');
         } else if ($user->role == 'guru') {
-            return redirect()->route('dashboard');
+            return redirect()->intended('dashboard');
         } else {
-            return redirect()->route('home');
+            return redirect()->intended('home');
         }
 
         // if () {

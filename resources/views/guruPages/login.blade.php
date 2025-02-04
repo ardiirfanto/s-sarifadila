@@ -69,16 +69,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <form method="POST" action="/loginProcess" enctype="multipart/form-data">
+                    <form method="POST" action="/loginProcess">
                         @csrf
                         <div class="form-group">
                             <label for="email" class="text-white"></label>
-                            <input type="email" name="email" placeholder="Enter Email" class="form-control"
+                            <input value="rosi@email.com" type="email" name="email" placeholder="Enter Email" class="form-control"
                                 id="email">
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-white"></label>
-                            <input type="password" name="password" placeholder="Enter Password" class="form-control"
+                            <input value="rosi123" type="password" name="password" placeholder="Enter Password" class="form-control"
                                 id="password">
                         </div>
                         <button onclick="soundBtn()" class="btn btn-warning w-100" type="submit">Log In</button>
