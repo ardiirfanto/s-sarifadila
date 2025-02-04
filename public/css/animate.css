@@ -1,0 +1,27 @@
+.logo-animate {
+    animation: bounce .8s infinite alternate;
+}
+
+.btn-animate {
+    animation: bounce .4s infinite alternate;
+}
+
+.btn-click:hover {
+    animation: bounce .4s infinite alternate;
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounce {
+    to {
+        transform: scale(1.05);
+    }
+}
