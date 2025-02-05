@@ -30,73 +30,74 @@
         </div>
     @endif
     <div class="container">
-      <div class="element-heading mt-20">
-      <div class="grid lg:grid-cols-1 gap-3 ">
-        <div class="text-lg font-semibold text-blue-700 text-center">
-            Tambah Data Materi
+        <div class="element-heading mt-20">
+            <div class="grid lg:grid-cols-1 gap-3 ">
+                <div class="text-lg font-semibold text-blue-700 text-center">
+                    Tambah Data Materi
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
- 
 
-    <div class="container">
-      <div class="card">
-        <div class="card-body">
 
-    
-        <form action="{{ route('materi.store') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            {{-- Gambar --}}
-            <div class="my-5">
-                <input type="file" name="gambar" id="gambar" accept="image/*"
-                    class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    required>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('materi.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        {{-- Gambar --}}
+                        <input type="text" value="{{ $mapel->id }}" name="mapel_id" hidden>
+                        <div class="my-5">
+                            <input type="file" name="gambar" id="gambar" accept="image/*"
+                                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                required>
+                        </div>
+                        {{-- Bab --}}
+                        <div class="my-5">
+                            <label for="bab" class="text-sm font-semibold">Masukan BAB</label>
+                            <select name="bab" id="bab"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                                <option value="">Pilih BAB</option>
+                                <option value="I">BAB I</option>
+                                <option value="II">BAB II</option>
+                                <option value="III">BAB III</option>
+                                <option value="IV">BAB IV</option>
+                                <option value="V">BAB V</option>
+                                <option value="VI">BAB VI</option>
+                                <option value="VII">BAB VII</option>
+                                <option value="VIII">BAB VIII</option>
+                                <option value="IX">BAB IX</option>
+                                <option value="X">BAB X</option>
+                                <option value="XI">BAB XI</option>
+                                <option value="XII">BAB XII</option>
+                                <option value="XIII">BAB XIII</option>
+                                <option value="XIV">BAB XIV</option>
+                                <option value="XV">BAB XV</option>
+                            </select>
+                        </div>
+                        {{-- Judul --}}
+                        <div class="my-5">
+                            <label for="judul" class="text-sm font-semibold">Masukan Judul Materi</label>
+                            <input type="text" name="judul" id="judul" placeholder="'Maximal 12 Huruf'"
+                                maxlength="12"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                required>
+                        </div>
+                        {{-- Simpan --}}
+                        <div class="my-5 flex">
+                            <button type="submit"
+                                class="grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md p-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Simpan
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            {{-- Bab --}}
-            <div class="my-5">
-                <label for="bab" class="text-sm font-semibold">Masukan BAB</label>
-                    <select name="bab" id="bab"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required>
-            <option value="">Pilih BAB</option>
-            <option value="I">BAB I</option>
-            <option value="II">BAB II</option>
-            <option value="III">BAB III</option>
-            <option value="IV">BAB IV</option>
-            <option value="V">BAB V</option>
-            <option value="VI">BAB VI</option>
-            <option value="VII">BAB VII</option>
-            <option value="VIII">BAB VIII</option>
-            <option value="IX">BAB IX</option>
-            <option value="X">BAB X</option>
-            <option value="XI">BAB XI</option>
-            <option value="XII">BAB XII</option>
-            <option value="XIII">BAB XIII</option>
-            <option value="XIV">BAB XIV</option>
-            <option value="XV">BAB XV</option>
-        </select>       
-            </div>
-            {{-- Judul --}}
-            <div class="my-5">
-                <label for="judul" class="text-sm font-semibold">Masukan Judul Materi</label>
-                <input type="text" name="judul" id="judul" placeholder="'Maximal 12 Huruf'" maxlength="12"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required>
-            </div>
-            {{-- Simpan --}}
-            <div class="my-5 flex">
-                <button type="submit"
-                    class="grow text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md p-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Simpan
-                </button>
-            </div>
-        </form>
         </div>
-      </div>
-    </div>
-    
-    <div class="pt-2"></div>
-   
-        
+
+        <div class="pt-2"></div>
+
+
     </div>
 
     <footer>
@@ -114,7 +115,8 @@
                     <span
                         class="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">Home</span>
                 </a>
-                <a href="https://shopee.co.id/Buku-SMK-Kurikulum-Merdeka-PENGELASAN-FCAW-(Teknik-Pengelasan)-i.586476697.23776239059" button type="button"
+                <a href="https://shopee.co.id/Buku-SMK-Kurikulum-Merdeka-PENGELASAN-FCAW-(Teknik-Pengelasan)-i.586476697.23776239059"
+                    button type="button"
                     class="inline-flex flex-col items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
                     <svg class="w-5 h-5 mb-2 text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500"
                         aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

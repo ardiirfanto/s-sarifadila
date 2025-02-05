@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mapel;
 use App\Models\Materi;
 use App\Models\Quiz;
 use App\Models\SubMateri;
@@ -12,7 +13,25 @@ class GuruPages extends Controller
 {
     public function index()
     {
-        return view('guruPages.dash');
+        $user = Auth::user();
+        $data = Mapel::where('user_id', $user->id)->get();
+
+        $params = [
+            "data" => $data
+        ];
+
+        return view('guruPages.dash', $params);
+    }
+
+    public function materiPage($idmapel)
+    {
+        $data = Materi::where('mapel_id', $idmapel)->get();
+        $mapel = Mapel::where('id', $idmapel)->first();
+        $params = [
+            "mapel" => $mapel,
+            "data" => $data
+        ];
+        return view('guruPages.materi', $params);
     }
 
     public function kuisPage()
@@ -29,7 +48,7 @@ class GuruPages extends Controller
     {
         $data = Quiz::join('materis', 'materis.id', 'quizzes.materi_id')
             ->where('quizzes.id', $id)
-            ->first(['quizzes.*','materis.bab','materis.judul']);
+            ->first(['quizzes.*', 'materis.bab', 'materis.judul']);
         return view('guruPages.quizDetail', compact('data'));
     }
 
@@ -43,10 +62,12 @@ class GuruPages extends Controller
         return view('guruPages.videomateri');
     }
 
-    public function kelolamateri()
+    public function kelolamateri($idmapel)
     {
-        $materi = Materi::get();
+        $mapel = Mapel::find($idmapel);
+        $materi = Materi::where('mapel_id', $idmapel)->get();
         $params = [
+            "mapel" => $mapel,
             "materi" => $materi
         ];
         return view('guruPages.materi.view', $params);
@@ -61,9 +82,13 @@ class GuruPages extends Controller
         ];
         return view('guruPages.submateri.view', $params);
     }
-    public function tambahmateri()
+    public function tambahmateri($idmapel)
     {
-        return view('guruPages.materi.form');
+        $mapel = Mapel::find($idmapel);
+        $params = [
+            "mapel" => $mapel,
+        ];
+        return view('guruPages.materi.form', $params);
     }
     public function tambahsubmateri($materiid)
     {

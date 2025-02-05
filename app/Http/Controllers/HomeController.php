@@ -32,7 +32,7 @@ class HomeController extends Controller
             "data" => $materis
         ];
 
-        return view('mapel', $params);
+        return view('materi', $params);
     }
 
     function submateri($idmateri){

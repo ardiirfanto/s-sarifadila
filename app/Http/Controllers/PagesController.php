@@ -6,6 +6,7 @@ use App\Models\Code;
 use App\Models\Answer;
 use App\Models\Question;
 use App\Models\MateriVideo;
+use App\Models\Quiz;
 use App\Models\QuizTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -262,6 +263,21 @@ class PagesController extends Controller
     public function nilai()
     {
         return view('nilai');
+    }
+
+    public function lihatNilaiQuiz()
+    {
+        $user = Auth::user();
+        $data = Quiz::join('materis', 'materis.id', 'quizzes.materi_id')
+            ->join('mapels', 'mapels.id', 'materis.mapel_id')
+            ->join('codes', 'codes.quiz_id', 'quizzes.id')
+            ->join('scores', 'scores.code', 'codes.code')
+            ->where('scores.nisn', $user->nisn)
+            ->get(['scores.nilai','scores.nisn','codes.code','mapels.mapel','materis.bab','materis.judul']);
+        $params = [
+            "data" => $data
+        ];
+        return view('quiz.list_nilai_quiz', $params);
     }
 
     // Private

@@ -16,7 +16,7 @@ CREATE TABLE `answers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `codes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -26,7 +26,7 @@ CREATE TABLE `codes` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `codes_code_unique` (`code`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -75,7 +75,7 @@ CREATE TABLE `materis` (
   PRIMARY KEY (`id`),
   KEY `materis_mapel_id_foreign` (`mapel_id`),
   CONSTRAINT `materis_mapel_id_foreign` FOREIGN KEY (`mapel_id`) REFERENCES `mapels` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `migrations` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -92,7 +92,7 @@ CREATE TABLE `options` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `password_reset_tokens` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -125,7 +125,7 @@ CREATE TABLE `questions` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `quiz_times` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -133,7 +133,7 @@ CREATE TABLE `quiz_times` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `quizzes` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -143,7 +143,7 @@ CREATE TABLE `quizzes` (
   PRIMARY KEY (`id`),
   KEY `quizzes_materi_id_foreign` (`materi_id`),
   CONSTRAINT `quizzes_materi_id_foreign` FOREIGN KEY (`materi_id`) REFERENCES `materis` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `scores` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -154,7 +154,7 @@ CREATE TABLE `scores` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE `sub_materis` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -188,8 +188,17 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_nisn_unique` (`nisn`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `answers` (`id`, `siswa_code_id`, `option_id`, `question_id`, `code`, `created_at`, `updated_at`) VALUES
+(1, 123456, 1, 1, 'biz0DB', '2025-02-05 06:42:54', '2025-02-05 06:42:54');
+INSERT INTO `answers` (`id`, `siswa_code_id`, `option_id`, `question_id`, `code`, `created_at`, `updated_at`) VALUES
+(2, 123456, 4, 2, 'biz0DB', '2025-02-05 06:43:00', '2025-02-05 06:43:00');
+INSERT INTO `answers` (`id`, `siswa_code_id`, `option_id`, `question_id`, `code`, `created_at`, `updated_at`) VALUES
+(3, 12678, 2, 1, 'biz0DB', '2025-02-05 08:55:22', '2025-02-05 08:55:22');
+INSERT INTO `answers` (`id`, `siswa_code_id`, `option_id`, `question_id`, `code`, `created_at`, `updated_at`) VALUES
+(4, 12678, 4, 2, 'biz0DB', '2025-02-05 08:55:24', '2025-02-05 08:55:24');
 
-
+INSERT INTO `codes` (`id`, `code`, `quiz_id`, `created_at`, `updated_at`) VALUES
+(1, 'biz0DB', 1, '2025-02-05 05:53:18', '2025-02-05 05:53:18');
 
 
 
@@ -211,7 +220,9 @@ INSERT INTO `materis` (`id`, `mapel_id`, `bab`, `judul`, `gambar`, `created_at`,
 (3, 1, 'III', 'Atletik', 'materi3.jpg', '2025-01-29 01:14:36', '2025-01-29 01:14:36');
 INSERT INTO `materis` (`id`, `mapel_id`, `bab`, `judul`, `gambar`, `created_at`, `updated_at`) VALUES
 (4, 1, 'IV', 'Pencak Silat', 'materi4.jpg', '2025-01-29 01:14:36', '2025-01-29 01:14:36'),
-(5, 1, 'V', 'Kebugaran Jasmani', 'materi5.jpg', '2025-01-29 01:14:36', '2025-01-29 01:14:36');
+(5, 1, 'V', 'Kebugaran Jasmani', 'materi5.jpg', '2025-01-29 01:14:36', '2025-01-29 01:14:36'),
+(6, 2, 'I', 'Bangun Datar', 'MATERI_1738734157.png', '2025-02-05 05:42:38', '2025-02-05 05:42:38'),
+(7, 2, 'II', 'Bangun Ruang', 'MATERI_1738734246.png', '2025-02-05 05:44:06', '2025-02-05 05:44:06');
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1);
@@ -233,19 +244,39 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2025_02_05_021935_create_materi_videos_table', 1),
 (15, '2025_02_07_113532_create_quizzes_table', 1);
 
+INSERT INTO `options` (`id`, `question_id`, `option`, `nilai`, `created_at`, `updated_at`) VALUES
+(1, 1, '4', 50, '2025-02-05 05:54:05', '2025-02-05 05:54:05');
+INSERT INTO `options` (`id`, `question_id`, `option`, `nilai`, `created_at`, `updated_at`) VALUES
+(2, 1, '3', 0, '2025-02-05 05:54:21', '2025-02-05 05:54:21');
+INSERT INTO `options` (`id`, `question_id`, `option`, `nilai`, `created_at`, `updated_at`) VALUES
+(3, 2, 'Dua', 0, '2025-02-05 05:54:41', '2025-02-05 05:54:41');
+INSERT INTO `options` (`id`, `question_id`, `option`, `nilai`, `created_at`, `updated_at`) VALUES
+(4, 2, 'Tiga', 50, '2025-02-05 05:54:56', '2025-02-05 05:54:56');
 
 
 
 
 
+INSERT INTO `questions` (`id`, `quiz_id`, `pertanyaan`, `gambar`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Berapa Sisi Segi Empat?', NULL, '2025-02-05 05:53:48', '2025-02-05 05:53:48');
+INSERT INTO `questions` (`id`, `quiz_id`, `pertanyaan`, `gambar`, `created_at`, `updated_at`) VALUES
+(2, 1, 'Berapa sisi segi tiga?', NULL, '2025-02-05 05:54:30', '2025-02-05 05:54:30');
 
 
+INSERT INTO `quiz_times` (`id`, `time`, `created_at`, `updated_at`) VALUES
+(1, 120, NULL, NULL);
 
 
+INSERT INTO `quizzes` (`id`, `materi_id`, `created_at`, `updated_at`) VALUES
+(1, 6, '2025-02-05 05:53:18', '2025-02-05 05:53:18');
 
 
-
-
+INSERT INTO `scores` (`id`, `nama`, `nisn`, `code`, `nilai`, `created_at`, `updated_at`) VALUES
+(1, 'Siswa', '123456', 'biz0DB', 100, '2025-02-05 06:43:03', '2025-02-05 06:43:03');
+INSERT INTO `scores` (`id`, `nama`, `nisn`, `code`, `nilai`, `created_at`, `updated_at`) VALUES
+(3, 'Riska', '12678', 'biz0DB', 50, '2025-02-05 08:55:27', '2025-02-05 08:55:27');
+INSERT INTO `scores` (`id`, `nama`, `nisn`, `code`, `nilai`, `created_at`, `updated_at`) VALUES
+(4, 'Riska', '12678', 'service-worker.js', 0, '2025-02-05 08:55:32', '2025-02-05 08:55:32');
 
 INSERT INTO `sub_materis` (`id`, `materi_id`, `judul`, `gambar`, `content`, `created_at`, `updated_at`) VALUES
 (1, 1, 'SEPAK BOLA (FOOTBALL)', 'materi1_1.jpg', NULL, '2025-01-29 01:14:36', '2025-01-29 01:14:36');

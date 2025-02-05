@@ -18,7 +18,7 @@
         class="mb-4 bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-1/2 xl:w-1/4 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option value="0" selected>Lihat Semua</option>
         @foreach ($materi as $item)
-            <option value="{{ $item->id }}">BAB {{ $item->bab . ' - ' . $item->judul }}</option>
+            <option value="{{ $item->id }}">[{{ $item->mapel }}] BAB {{ $item->bab . ' - ' . $item->judul }}</option>
         @endforeach
     </select>
     <div class="relative overflow-x-auto">

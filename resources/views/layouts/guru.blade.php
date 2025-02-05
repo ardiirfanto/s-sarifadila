@@ -8,6 +8,7 @@
     <title>Materi Pembelajaran</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('styles1.css') }}">
 </head>
 
 <body>
@@ -78,7 +79,7 @@
 
 
 
-    <div class="p-4">
+    <div class="p-4 bg-white">
         <div class="p-4 mb-20 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
             @if (session('status'))
                 <div id="toast-top-right"
@@ -149,8 +150,26 @@
         </div>
     </div>
 
+    @include('layouts.footer')
+
     <!-- Include the Quill library -->
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/slideToggle.min.js') }}"></script>
+    <script src="{{ asset('js/internet-status.js') }}"></script>
+    <script src="{{ asset('js/tiny-slider.js') }}"></script>
+    <script src="{{ asset('js/venobox.min.js') }}"></script>
+    <script src="{{ asset('js/countdown.js') }}"></script>
+    <script src="{{ asset('js/rangeslider.min.js') }}"></script>
+    <script src="{{ asset('js/vanilla-dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('js/dark-rtl.js') }}"></script>
+    <script src="{{ asset('js/active.js') }}"></script>
+    <script src="{{ asset('js/pwa.js') }}"></script>
+    <script src="{{ asset('js/btn-click.js') }}"></script>
+    <script src="{{ asset('js/background-music.js') }}"></script> {{-- Efek Sound Background --}}
 </body>
 
 </html>

@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function () {
     // Route::get('/home', [PagesController::class, 'home'])->name('home');
     Route::get('/informasi', [PagesController::class, 'informasi'])->name('informasi');
     Route::get('/nilai', [PagesController::class, 'nilai'])->name('nilai');
+    Route::get('/lihat-nilai-quiz', [PagesController::class, 'lihatNilaiQuiz'])->name('lihat-nilai-quiz');
 
     // NEW PAGE
     Route::get('/home', [HomeController::class, 'home'])->name('home');
@@ -100,13 +101,14 @@ Route::group(['middleware' => ['auth', 'HakAkses:siswa']], function () {
 Route::group(['middleware' => ['auth', 'HakAkses:guru']], function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [GuruPages::class, 'index'])->name('dashboard');
+        Route::get('/materi-guru/{idmapel}', [GuruPages::class, 'materiPage'])->name('materi-guru');
         Route::get('/kuis', [GuruPages::class, 'kuisPage'])->name('kuisPageGuru');
         Route::get('/detail-kuis/{id}', [GuruPages::class, 'detailQuiz'])->name('detailQuiz');
         Route::get('/hasil-kuis', [GuruPages::class, 'hasilKuis'])->name('hasilKuis');
         Route::get('/daftar-siswa', [GuruPages::class, 'daftarSiswa'])->name('daftarSiswa');
-        Route::get('/videomateri', [GuruPages::class, 'videomateri'])->name('videomateri');
-        Route::get('/kelolamateri', [GuruPages::class, 'kelolamateri'])->name('kelolamateri');
-        Route::get('/tambahmateri', [GuruPages::class, 'tambahmateri'])->name('tambahmateri');
+        Route::get('/videomateri/{idmapel}', [GuruPages::class, 'videomateri'])->name('videomateri');
+        Route::get('/kelolamateri/{idmapel}', [GuruPages::class, 'kelolamateri'])->name('kelolamateri');
+        Route::get('/tambahmateri/{idmapel}', [GuruPages::class, 'tambahmateri'])->name('tambahmateri');
         Route::get('/kelolasubmateri/{materiid}', [GuruPages::class, 'kelolasubmateri'])->name('kelolasubmateri');
         Route::get('/tambahsubmateri/{materiid}', [GuruPages::class, 'tambahsubmateri'])->name('tambahsubmateri');
         Route::get('/ubahsubmateri/{submateriid}', [GuruPages::class, 'ubahsubmateri'])->name('ubahsubmateri');

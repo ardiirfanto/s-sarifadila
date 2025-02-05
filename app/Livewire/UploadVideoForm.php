@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Materi;
 use App\Models\MateriVideo;
 use App\Models\SubMateri;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Validate;
@@ -74,8 +75,10 @@ class UploadVideoForm extends Component
         //     default:
         //         $data = [];
         // }
-
-        $datamateri = Materi::get();
+        $user = Auth::user();
+        $datamateri = Materi::join('mapels','mapels.id','materis.mapel_id')
+        ->where('mapels.user_id',$user->id)
+        ->get(['materis.*','mapels.mapel']);
         $datasub = [];
 
         if($this->pilihPelajaran){

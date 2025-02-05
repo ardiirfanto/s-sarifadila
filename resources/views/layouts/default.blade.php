@@ -123,24 +123,24 @@
             <!-- Header Content -->
             <div class="header-content position-relative d-flex align-items-center justify-content-between">
                 <!-- Back Button -->
-                
+
 
                 <!-- Page Title -->
                 <div class="page-heading">
                     <h6 class="mb-0">
-                        @hasSection ('title')
+                        @hasSection('title')
                             @yield('title')
                         @else
-                        <div class="logo-wrapper">
-                        <a href="home.html">
-                            <img src="img/core-img/logo.png" alt="">
-                        </a>
-                    </div>
+                            <div class="logo-wrapper">
+                                <a href="home.html">
+                                    <img src="{{ asset('img/core-img/logo.png') }}" alt="">
+                                </a>
+                            </div>
                         @endif
                     </h6>
                 </div>
 
-                
+
             </div>
         </div>
     </div>
@@ -148,52 +148,18 @@
         <div class="card-body direction-rtl p-4">
 
         </div>
-      </div>
+    </div>
     </div>
 
 
 
     <div class="pb-3"></div>
-  </div>
-
-
-
-  <!-- Footer Nav -->
-  <div class="footer-nav-area" id="footerNav">
-    <div class="container px-0">
-      <!-- Footer Content -->
-      <div class="footer-nav position-relative">
-        <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-        <li>
-                            <a href="https://shopee.co.id/Buku-SMK-Kurikulum-Merdeka-PENGELASAN-FCAW-(Teknik-Pengelasan)-i.586476697.23776239059">
-                                <i class="bi bi-shop"></i>
-                                <span>Shop</span>
-                            </a>
-                        </li>
-                        <li class="active">
-            <a href="{{ route('dashboard') }}">
-              <i class="bi bi-house"></i>
-              <span>Home</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="https://smkn2dumai.sch.id/">
-              <i class="bi bi-chat-dots"></i>
-              <span>Profile</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="/logout">
-              <i class="bi bi-gear"></i>
-              <span>logout</span>
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
-  </div>
+
+
+
+    <!-- Footer Nav -->
+    @include('layouts.footer')
 
     <!-- All JavaScript Files -->
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>

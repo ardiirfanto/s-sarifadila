@@ -8,6 +8,7 @@ use App\Models\Quiz;
 use App\Models\Option;
 use Livewire\Component;
 use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithPagination;
 
@@ -19,18 +20,21 @@ class QuizList extends Component
 
     public function render()
     {
-        $materi = Materi::get();
+        $user = Auth::user();
+        $materi = Materi::join('mapels', 'mapels.id', 'materis.mapel_id')
+            ->where('mapels.user_id', $user->id)
+            ->get(['materis.*', 'mapels.mapel']);
         if ($this->sorting != 0) {
             $data = Quiz::with('code')
                 ->join('materis', 'materis.id', 'quizzes.materi_id')
                 ->where('materi_id', 'LIKE', '%' . $this->sorting . '%')
                 ->latest('quizzes.id')
-                ->paginate(10, ['quizzes.*','materis.bab','materis.judul']);
+                ->paginate(10, ['quizzes.*', 'materis.bab', 'materis.judul']);
         } else {
             $data = Quiz::with('code')
                 ->join('materis', 'materis.id', 'quizzes.materi_id')
                 ->latest('quizzes.id')
-                ->paginate(10, ['quizzes.*','materis.bab','materis.judul']);
+                ->paginate(10, ['quizzes.*', 'materis.bab', 'materis.judul']);
         }
 
         return view('livewire.quiz-list', compact('data', 'materi'));

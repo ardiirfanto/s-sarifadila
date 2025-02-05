@@ -14,6 +14,7 @@ class MateriController extends Controller
 
         $post = [
             'judul' => $req->judul,
+            'mapel_id' => $req->mapel_id,
             'gambar' => $gambar,
             'bab' => $req->bab,
         ];
@@ -26,7 +27,7 @@ class MateriController extends Controller
         }
 
         session()->flash('status', 'Materi Berhasil tersimpan!');
-        return redirect()->route('kelolamateri');
+        return redirect()->route('kelolamateri', ['idmapel' => $post['mapel_id']]);
 
     }
 
@@ -38,7 +39,7 @@ class MateriController extends Controller
 
         if ($row->delete()) {
             session()->flash('status', 'Materi Berhasil dihapus!');
-            return redirect()->route('kelolamateri');
+            return redirect()->back();
         }else {
             session()->flash('status', 'Materi Gagal dihapus!');
             return redirect()->back();

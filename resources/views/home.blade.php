@@ -75,37 +75,56 @@
                                     <img src="img/bg-img/2i.jpg" alt="">
                                 </div>
                                 <div class="card-content">
-                                    <h5 class="mb-3">Kuis</h5>
+                                    <h5 class="mb-3">Kerjakan Kuis</h5>
                                     <livewire:login-quiz-form />
+
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="element-heading mt-3">
-                    </div>
                 </div>
-                <div class="container">
-                    <div class="card card-round btn-click">
-                        <div class="card-body d-flex align-items-center direction-rtl">
-                            <div class="card-img-wrap">
-                                <img src="img/bg-img/2ii.jpg" alt="">
-                            </div>
-                            <div class="card-content">
-                                <h5 class="mb-3">Petunjuk</h5>
-                                <button onclick="animateBtnPelajaran('bab-skor','credit')" class="btn btn-warning">BUKA
-                                    Petunjuk</button>
-                            </div>
+
+                <div class="element-heading mt-3">
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="card card-round btn-click" id="hasil-quiz">
+                    <div class="card-body d-flex align-items-center direction-rtl">
+                        <div class="card-img-wrap">
+                            <img src="img/bg-img/2i.jpg" alt="">
+                        </div>
+                        <div class="card-content">
+                            <h5 class="mb-3">Lihat Hasil Quiz</h5>
+                            <button onclick="animateBtnPelajaran('hasil-quiz','lihat-nilai-quiz')" class="btn btn-warning">
+                                Lihat Kuis
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-
-                <div class="container">
-                    <div class="card-body direction-rtl p-3">
+            <div class="container mt-3">
+                <div class="card card-round btn-click">
+                    <div class="card-body d-flex align-items-center direction-rtl">
+                        <div class="card-img-wrap">
+                            <img src="img/bg-img/2ii.jpg" alt="">
+                        </div>
+                        <div class="card-content">
+                            <h5 class="mb-3">Petunjuk</h5>
+                            <button onclick="animateBtnPelajaran('bab-skor','credit')" class="btn btn-warning">BUKA
+                                Petunjuk</button>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
+            <div class="container">
+                <div class="card-body direction-rtl p-3">
+                </div>
+            </div>
         </div>
+    </div>
     </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Code;
 use App\Models\Materi;
 use App\Models\Quiz;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,10 @@ class CreateQuizForm extends Component
 
     public function render()
     {
-        $materi = Materi::get();
+        $user = Auth::user();
+        $materi = Materi::join('mapels','mapels.id','materis.mapel_id')
+        ->where('mapels.user_id',$user->id)
+        ->get(['materis.*','mapels.mapel']);
         return view('livewire.create-quiz-form',compact('materi'));
     }
 
