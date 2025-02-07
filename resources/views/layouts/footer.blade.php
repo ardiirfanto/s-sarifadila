@@ -3,8 +3,10 @@
         <!-- Footer Content -->
         <div class="footer-nav position-relative">
             <ul class="h-100 d-flex align-items-center justify-content-between ps-0">
-                <li class="{{ Route::is(auth()->user()->role == 'siswa' ? 'home' : 'dashboard') ? 'active' : '' }}">
-                    <a href="{{ route(auth()->user()->role == 'siswa' ? 'home' : 'dashboard') }}">
+                <li
+                    class="{{ Route::is((auth()->user()->role == 'siswa' ? 'home' : auth()->user()->role == 'guru') ? 'dashboard' : 'dashboard-kurikulum') ? 'active' : '' }}">
+                    <a
+                        href="{{ route((auth()->user()->role == 'siswa' ? 'home' : auth()->user()->role == 'guru') ? 'dashboard' : 'dashboard-kurikulum') }}">
                         <i class="bi bi-house"></i>
                         <span>Home</span>
                     </a>

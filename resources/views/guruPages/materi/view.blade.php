@@ -42,52 +42,53 @@
             <div class="card bg-dark direction-rtl">
                 <div class="card-body">
                     <div class="mb-2">
-                        <a href="{{ route('tambahmateri',['idmapel' => $mapel->id]) }}"
+                        <a href="{{ route('tambahmateri', ['idmapel' => $mapel->id]) }}"
                             class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                             Tambah Materi
                         </a>
                     </div>
                     <br>
-                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000"
-                        data-bs-autohide="false">
-                        <div class="toast-header">
-                            <div class="grid lg:grid-cols-3 gap-3 ">
+                    <div class="grid lg:grid-cols-2 gap-2 ">
 
-                                @foreach ($materi as $item)
-                                    <div class="border rounded-lg py-5 xl:px-5 px-3 mb-4">
-                                        <div class="flex flex-row gap-2 mb-2">
-                                            <div class="product-thumbnail d-block">
-                                                <img class="w-20 h-20 rounded-lg"
-                                                    src="{{ asset('assets/img/materi/' . $item->gambar) }}" alt="">
-                                            </div>
-                                            <div class="flex flex-col justify-between">
-                                                <div class="text-lg font-semibold">
-                                                    BAB {{ $item->bab . ' - ' . $item->judul }}
-                                                </div>
-                                                <div>
-                                                    <button
-                                                        onclick="setDelRoute('{{ route('materi.delete', ['id' => $item->id]) }}')"
-                                                        data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                                        class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                                        Hapus
-                                                    </button>
-                                                </div>
-                                            </div>
+                        @foreach ($materi as $item)
+                            <div class="border rounded-lg py-5 xl:px-5 px-3 mb-4">
+                                <div class="flex flex-row gap-2 mb-2">
+                                    <div class="product-thumbnail d-block">
+                                        <img class="w-20 h-20 rounded-lg"
+                                            src="{{ asset('assets/img/materi/' . $item->gambar) }}" alt="">
+                                    </div>
+                                    <div class="flex flex-col justify-between">
+                                        <div class="text-lg font-semibold">
+                                            BAB {{ $item->bab . ' - ' . $item->judul }}
                                         </div>
-                                        <hr>
-
-                                        <div class="mt-2">
-                                            <a href="{{ route('kelolasubmateri', ['materiid' => $item->id]) }}"
-                                                class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                                                Lihat Sub Materi
-                                            </a>
+                                        <div>
+                                            <button
+                                                onclick="setDelRoute('{{ route('materi.delete', ['id' => $item->id]) }}')"
+                                                data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                                                class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                                Hapus
+                                            </button>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <hr>
+
+                                <div class="mt-2">
+                                    <a href="{{ route('kelolasubmateri', ['materiid' => $item->id]) }}"
+                                        class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                                        Lihat Sub Materi
+                                    </a>
+                                </div>
                             </div>
+                        @endforeach
+                    </div>
+                    {{-- <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="3000"
+                        data-bs-autohide="false">
+                        <div class="toast-header">
+
                         </div>
                         <div class="toast-body">Silahkan isi menu materi.</div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
