@@ -53,11 +53,11 @@
                                     </div>
                                 </div>
                             @endif
-                            <livewire:quiz-list />
+                            <livewire:quiz-list  :mapel-id="$mapelId" />
                         </div>
                         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="settings" role="tabpanel"
                             aria-labelledby="settings-tab">
-                            <livewire:create-quiz-form />
+                            <livewire:create-quiz-form :mapel-id="$mapelId"  />
                         </div>
                         <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="time" role="tabpanel"
                             aria-labelledby="time-tab">

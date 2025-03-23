@@ -102,9 +102,9 @@ Route::group(['middleware' => ['auth', 'HakAkses:guru']], function () {
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [GuruPages::class, 'index'])->name('dashboard');
         Route::get('/materi-guru/{idmapel}', [GuruPages::class, 'materiPage'])->name('materi-guru');
-        Route::get('/kuis', [GuruPages::class, 'kuisPage'])->name('kuisPageGuru');
+        Route::get('/kuis/{idmapel}', [GuruPages::class, 'kuisPage'])->name('kuisPageGuru');
         Route::get('/detail-kuis/{id}', [GuruPages::class, 'detailQuiz'])->name('detailQuiz');
-        Route::get('/hasil-kuis', [GuruPages::class, 'hasilKuis'])->name('hasilKuis');
+        Route::get('/hasil-kuis/{idmapel}', [GuruPages::class, 'hasilKuis'])->name('hasilKuis');
         Route::get('/daftar-siswa', [GuruPages::class, 'daftarSiswa'])->name('daftarSiswa');
         Route::get('/videomateri/{idmapel}', [GuruPages::class, 'videomateri'])->name('videomateri');
         Route::get('/kelolamateri/{idmapel}', [GuruPages::class, 'kelolamateri'])->name('kelolamateri');

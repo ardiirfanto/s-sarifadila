@@ -34,14 +34,14 @@ class GuruPages extends Controller
         return view('guruPages.materi', $params);
     }
 
-    public function kuisPage()
+    public function kuisPage($idmapel)
     {
-        return view('guruPages.quiz');
+        return view('guruPages.quiz',['mapelId' => $idmapel]);
     }
 
-    public function hasilKuis()
+    public function hasilKuis($idmapel)
     {
-        return view('guruPages.detailHasilKuis');
+        return view('guruPages.detailHasilKuis',['mapelId' => $idmapel]);
     }
 
     public function detailQuiz($id)
@@ -57,9 +57,9 @@ class GuruPages extends Controller
         return view('guruPages.daftar-siswa');
     }
 
-    public function videomateri()
+    public function videomateri($id)
     {
-        return view('guruPages.videomateri');
+        return view('guruPages.videomateri',['mapelId' => $id]);
     }
 
     public function kelolamateri($idmapel)

@@ -42,11 +42,11 @@
         <div class="card-body">
         <div class="grid grid-cols-12 gap-3">
         <div class="lg:col-span-7 col-span-12 mb-12">
-            <livewire:list-video />
+            <livewire:list-video :mapel-id="$mapelId" />
         </div>
         <div class="lg:col-span-5 col-span-12">
             <div class="border py-8 xl:px-10 px-3 shadow-md">
-                <livewire:upload-video-form />
+                <livewire:upload-video-form :mapel-id="$mapelId" />
             </div>
         </div>
     </div>
@@ -54,14 +54,14 @@
       </div>
     </div>
     <br>
-    
+
 
     <footer>
         <div
             class="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 dark:bg-gray-700 dark:border-gray-600">
             <div class="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
 
-              
+
                 <a href="https://shopee.co.id/Buku-SMK-Kurikulum-Merdeka-PENGELASAN-FCAW-(Teknik-Pengelasan)-i.586476697.23776239059" button type="button"
                     class="inline-flex flex-col items-center justify-center px-5 border-e border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group dark:border-gray-600">
                     <svg class="h-8 w-8 text-slate-500"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" />  <line x1="12" y1="12" x2="20" y2="7.5" />  <line x1="12" y1="12" x2="12" y2="21" />  <line x1="12" y1="12" x2="4" y2="7.5" />  <line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>

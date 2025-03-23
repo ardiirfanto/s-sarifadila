@@ -81,7 +81,7 @@
                             </div>
                             <!-- Contact Info-->
                             <div class="contact-info bg-primary">
-                                <a class="btn btn-creative btn-warning" href="{{ url('/dashboard/kuis') }}">Update Materi
+                                <a class="btn btn-creative btn-warning" href="{{ url('/dashboard/kuis/'.$mapel->id) }}">Update Materi
                                     Kuis</a>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                             </div>
                             <!-- Contact Info-->
                             <div class="contact-info bg-info">
-                                <a class="btn btn-creative btn-warning" href="{{ url('/dashboard/hasil-kuis') }}">Update Hasil
+                                <a class="btn btn-creative btn-warning" href="{{ url('/dashboard/hasil-kuis/'.$mapel->id) }}">Update Hasil
                                     Kuis</a>
                             </div>
                         </div>

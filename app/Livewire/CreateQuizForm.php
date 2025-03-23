@@ -11,15 +11,21 @@ use Illuminate\Support\Str;
 
 class CreateQuizForm extends Component
 {
-    public $pelajaran = 1, $code;
+    public $pelajaran = 1, $code, $mapelId;
+
+    public function mount($mapelId)
+    {
+        $this->mapelId = $mapelId;
+    }
 
     public function render()
     {
         $user = Auth::user();
-        $materi = Materi::join('mapels','mapels.id','materis.mapel_id')
-        ->where('mapels.user_id',$user->id)
-        ->get(['materis.*','mapels.mapel']);
-        return view('livewire.create-quiz-form',compact('materi'));
+        $materi = Materi::join('mapels', 'mapels.id', 'materis.mapel_id')
+            ->where('mapels.user_id', $user->id)
+            ->where('materis.mapel_id', $this->mapelId)
+            ->get(['materis.*', 'mapels.mapel']);
+        return view('livewire.create-quiz-form', compact('materi'));
     }
 
     public function generateCode()
@@ -29,12 +35,12 @@ class CreateQuizForm extends Component
 
     public function checkCode($code)
     {
-        return Code::where('code', 'LIKE', '%'. $code . '%')->exists();
+        return Code::where('code', 'LIKE', '%' . $code . '%')->exists();
     }
 
     public function submit()
     {
-        if($this->checkCode($this->code)){
+        if ($this->checkCode($this->code)) {
             $this->pelajaran = 1;
             $this->code = "";
 

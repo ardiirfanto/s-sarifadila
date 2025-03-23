@@ -6,5 +6,5 @@
             <h6>Hasil Kuis</h6>
         </div>
     </div>
-    <livewire:score-list />
+    <livewire:score-list :mapel-id="$mapelId" />
 @endsection

@@ -11,7 +11,11 @@ class ScoreList extends Component
 {
     use WithPagination;
 
-    public $urutkan, $pencarian;
+    public $urutkan, $pencarian, $mapelId;
+
+    public function mount($mapelId){
+        $this->mapelId = $mapelId;
+    }
 
     public function render()
     {
@@ -19,7 +23,8 @@ class ScoreList extends Component
         $query = Score::join('codes', 'codes.code', 'scores.code')
             ->join('quizzes', 'codes.quiz_id', 'quizzes.id')
             ->join('materis', 'materis.id', 'quizzes.materi_id')
-            ->join('mapels','mapels.id','materis.mapel_id');
+            ->join('mapels','mapels.id','materis.mapel_id')
+            ->where('mapels.id', $this->mapelId);
         $select = [
             "scores.nilai",
             "scores.created_at",

@@ -16,23 +16,30 @@ class QuizList extends Component
 {
     use WithPagination;
 
-    public $id, $sorting;
+    public $id, $sorting, $mapelId;
+
+    public function mount($mapelId){
+        $this->mapelId = $mapelId;
+    }
 
     public function render()
     {
         $user = Auth::user();
         $materi = Materi::join('mapels', 'mapels.id', 'materis.mapel_id')
             ->where('mapels.user_id', $user->id)
+            ->where('materis.mapel_id', $this->mapelId)
             ->get(['materis.*', 'mapels.mapel']);
         if ($this->sorting != 0) {
             $data = Quiz::with('code')
                 ->join('materis', 'materis.id', 'quizzes.materi_id')
                 ->where('materi_id', 'LIKE', '%' . $this->sorting . '%')
+                ->where('materis.mapel_id',$this->mapelId)
                 ->latest('quizzes.id')
                 ->paginate(10, ['quizzes.*', 'materis.bab', 'materis.judul']);
         } else {
             $data = Quiz::with('code')
                 ->join('materis', 'materis.id', 'quizzes.materi_id')
+                ->where('materis.mapel_id',$this->mapelId)
                 ->latest('quizzes.id')
                 ->paginate(10, ['quizzes.*', 'materis.bab', 'materis.judul']);
         }

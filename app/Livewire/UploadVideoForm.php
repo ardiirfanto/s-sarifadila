@@ -21,6 +21,13 @@ class UploadVideoForm extends Component
 
     public $fileVideo;
 
+    public $mapelId;
+
+    public function mount($mapelId)
+    {
+        $this->mapelId = $mapelId;
+    }
+
     public function rules()
     {
         return [
@@ -75,19 +82,21 @@ class UploadVideoForm extends Component
         //     default:
         //         $data = [];
         // }
+
         $user = Auth::user();
-        $datamateri = Materi::join('mapels','mapels.id','materis.mapel_id')
-        ->where('mapels.user_id',$user->id)
-        ->get(['materis.*','mapels.mapel']);
+        $datamateri = Materi::join('mapels', 'mapels.id', 'materis.mapel_id')
+            ->where('mapels.user_id', $user->id)
+            ->where('materis.mapel_id', $this->mapelId)
+            ->get(['materis.*', 'mapels.mapel']);
         $datasub = [];
 
-        if($this->pilihPelajaran){
+        if ($this->pilihPelajaran) {
             // dd($this->pilihPelajaran);
-            $datasub = SubMateri::where('materi_id',$this->pilihPelajaran)->get();
+            $datasub = SubMateri::where('materi_id', $this->pilihPelajaran)->get();
         }
 
 
-        return view('livewire.upload-video-form', compact('datamateri','datasub'));
+        return view('livewire.upload-video-form', compact('datamateri', 'datasub'));
     }
 
     public function store()

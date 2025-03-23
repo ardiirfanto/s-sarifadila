@@ -13,9 +13,18 @@ class ListVideo extends Component
 
     public $id;
 
+    public $mapelId;
+
+    public function mount($mapelId){
+        $this->mapelId = $mapelId;
+    }
+
     public function render()
     {
-        $data = MateriVideo::latest()->paginate(4);
+        $data = MateriVideo::join('sub_materis', 'materi_videos.submateri_id', '=', 'sub_materis.id')
+            ->join('materis','materis.id','=','sub_materis.materi_id')
+            ->where('materis.mapel_id', $this->mapelId)
+            ->paginate(4);
         return view('livewire.list-video', compact('data'));
     }
 
@@ -23,7 +32,7 @@ class ListVideo extends Component
     {
         $this->id = $id;
     }
-    
+
     public function hapusConfirm()
     {
         $find = MateriVideo::find($this->id);
